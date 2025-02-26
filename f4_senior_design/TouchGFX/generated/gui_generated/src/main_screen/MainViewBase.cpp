@@ -4,6 +4,7 @@
 #include <gui_generated/main_screen/MainViewBase.hpp>
 #include <touchgfx/Color.hpp>
 #include <images/BitmapDatabase.hpp>
+#include <texts/TextKeysAndLanguages.hpp>
 
 MainViewBase::MainViewBase() :
     buttonCallback(this, &MainViewBase::buttonCallbackHandler)
@@ -17,6 +18,14 @@ MainViewBase::MainViewBase() :
     toggleButton1.forceState(true);
     toggleButton1.setAction(buttonCallback);
     add(toggleButton1);
+
+    ADCVAL.setPosition(9, 321, 303, 43);
+    ADCVAL.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    ADCVAL.setLinespacing(0);
+    ADCVALBuffer[0] = 0;
+    ADCVAL.setWildcard(ADCVALBuffer);
+    ADCVAL.setTypedText(touchgfx::TypedText(T___SINGLEUSE_OPPC));
+    add(ADCVAL);
 }
 
 MainViewBase::~MainViewBase()

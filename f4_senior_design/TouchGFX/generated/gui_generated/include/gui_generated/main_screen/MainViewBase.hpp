@@ -9,6 +9,7 @@
 #include <gui/main_screen/MainPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
 class MainViewBase : public touchgfx::View<MainPresenter>
 {
@@ -35,6 +36,13 @@ protected:
      */
     touchgfx::Box __background;
     touchgfx::ToggleButton toggleButton1;
+    touchgfx::TextAreaWithOneWildcard ADCVAL;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t ADCVAL_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar ADCVALBuffer[ADCVAL_SIZE];
 
 private:
 

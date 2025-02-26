@@ -111,8 +111,8 @@ all: main-build
 main-build: f4_senior_design.elf secondary-outputs
 
 # Tool invocations
-f4_senior_design.elf f4_senior_design.map: $(OBJS) $(USER_OBJS) C:\Users\aleca\STM32CubeIDE\workspace_1.17.0\f4_senior_design\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "f4_senior_design.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\aleca\STM32CubeIDE\workspace_1.17.0\f4_senior_design\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="f4_senior_design.map" -Wl,--gc-sections -static -L"C:\Users\aleca\STM32CubeIDE\workspace_1.17.0\f4_senior_design\Middlewares\ST\touchgfx\lib\core\cortex_m4f\gcc" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+f4_senior_design.elf f4_senior_design.map: $(OBJS) $(USER_OBJS) C:\Users\aleca\OneDrive\Documents\GitHub\senior-design\f4_senior_design\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "f4_senior_design.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\aleca\OneDrive\Documents\GitHub\senior-design\f4_senior_design\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="f4_senior_design.map" -Wl,--gc-sections -static -L"C:\Users\aleca\OneDrive\Documents\GitHub\senior-design\f4_senior_design\Middlewares\ST\touchgfx\lib\core\cortex_m4f\gcc" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

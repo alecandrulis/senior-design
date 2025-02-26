@@ -37,6 +37,10 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+extern uint32_t value_adc;
+extern float temp;
+extern float hum;
+
 
 /* USER CODE END ET */
 
@@ -49,6 +53,8 @@ extern "C" {
 /* USER CODE BEGIN EM */
 
 /* USER CODE END EM */
+
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
@@ -74,7 +80,7 @@ void Error_Handler(void);
 #define DISPL_LED_GPIO_Port GPIOA
 #define DISPL_DC_Pin GPIO_PIN_7
 #define DISPL_DC_GPIO_Port GPIOA
-#define DISPL_SCK_Pin GPIO_PIN_10
+#define DISPL_SCK_Pin GPIO_PIN_13
 #define DISPL_SCK_GPIO_Port GPIOB
 #define DISPL_CS_Pin GPIO_PIN_7
 #define DISPL_CS_GPIO_Port GPIOC

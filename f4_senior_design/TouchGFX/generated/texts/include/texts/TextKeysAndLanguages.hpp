@@ -13,6 +13,7 @@ enum LANGUAGES
 enum TEXTS
 {
     T_TEXTID1,
+    T___SINGLEUSE_OPPC,
     NUMBER_OF_TEXT_KEYS
 };
 

@@ -3,6 +3,7 @@
 
 #include <touchgfx/Utils.hpp>
 #include <stdint.h>
+#include "main.h"
 
 
 class ModelListener;
@@ -39,11 +40,19 @@ public:
      * the ModelListener interface.
      */
     void tick();
+
+
+    uint32_t getADCVal() const {return adcVal;}
 protected:
     /**
      * Pointer to the currently active presenter.
      */
     ModelListener* modelListener;
+
+private:
+    uint32_t adcVal;
+
+
 };
 
 #endif /* MODEL_HPP */

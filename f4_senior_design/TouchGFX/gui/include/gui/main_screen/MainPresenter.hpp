@@ -27,6 +27,11 @@ public:
 
     virtual ~MainPresenter() {};
 
+    virtual void notifyADCChanged(uint32_t newVal);
+    virtual void notifyTemperatureChanged(float newTemp);
+    virtual void notifyHumidityChanged(float newHumidity);
+
+
 private:
     MainPresenter();
 

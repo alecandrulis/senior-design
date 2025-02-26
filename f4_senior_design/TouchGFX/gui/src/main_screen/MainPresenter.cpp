@@ -13,3 +13,16 @@ void MainPresenter::activate()
 void MainPresenter::deactivate()
 {
 }
+
+
+void MainPresenter::notifyADCChanged(uint32_t newVal){
+	view.setVal(newVal);
+}
+
+void MainPresenter::notifyTemperatureChanged(float newTemp){
+
+}
+
+void MainPresenter::notifyHumidityChanged(float newHumidity){
+
+}

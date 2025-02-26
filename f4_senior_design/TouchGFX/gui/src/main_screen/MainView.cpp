@@ -62,3 +62,22 @@ void MainView::updateGFXElements()
 //    buttonUp.invalidate();
 //    buttonDown.invalidate();
 }
+
+void MainView::setVal(uint32_t val){
+
+	Unicode::snprintf(ADCVALBuffer, ADCVAL_SIZE, "%d", val);
+	ADCVAL.invalidate();
+}
+
+void MainView::setTemperature(float temp){
+
+
+}
+
+void MainView::setHumidity(float humidity){
+
+
+
+}
+
+

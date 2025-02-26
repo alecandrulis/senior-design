@@ -14,6 +14,25 @@
             "InitialStatePressed": true,
             "Pressed": "__generated\\alternate_theme_images_widgets_togglebutton_large_round_off_dark.png",
             "Released": "__generated\\alternate_theme_images_widgets_togglebutton_large_round_on_active.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "ADCVAL",
+            "X": 9,
+            "Y": 321,
+            "Width": 303,
+            "Height": 43,
+            "TextId": "__SingleUse_OPPC",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 20
+            }
           }
         ],
         "Interactions": [

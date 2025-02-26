@@ -9,9 +9,14 @@
         <Translation Language="GB">&lt;number&gt;</Translation>
       </Text>
     </TextGroup>
-    <TextGroup Id="Unsorted" />
+    <TextGroup Id="Unsorted">
+      <Text Id="__SingleUse_OPPC" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">ADC VALUE:&lt;value&gt;</Translation>
+      </Text>
+    </TextGroup>
   </Texts>
   <Typographies>
     <Typography Id="Default" Font="Asap-Regular.ttf" Size="80" Bpp="4" IsVector="no" Direction="LTR" WildcardCharacterRanges="0-9" />
+    <Typography Id="Typography_00" Font="verdana.ttf" Size="30" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
   </Typographies>
 </TextDatabase>
