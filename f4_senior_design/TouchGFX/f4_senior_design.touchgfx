@@ -5,24 +5,69 @@
         "Name": "Main",
         "Components": [
           {
+            "Type": "Image",
+            "Name": "image1",
+            "Width": 356,
+            "Height": 500,
+            "RelativeFilename": "pic.png"
+          },
+          {
             "Type": "ToggleButton",
             "Name": "toggleButton1",
             "X": 88,
-            "Y": 210,
+            "Y": 383,
             "Width": 144,
             "Height": 60,
             "InitialStatePressed": true,
-            "Pressed": "__generated\\alternate_theme_images_widgets_togglebutton_large_round_off_dark.png",
-            "Released": "__generated\\alternate_theme_images_widgets_togglebutton_large_round_on_active.png"
+            "Pressed": "__generated\\alternate_theme_images_widgets_togglebutton_large_rounded_off_normal.png",
+            "Released": "__generated\\alternate_theme_images_widgets_togglebutton_large_rounded_on_action.png"
+          },
+          {
+            "Type": "TextArea",
+            "Name": "HUMVAL",
+            "X": 9,
+            "Y": 24,
+            "Width": 303,
+            "Height": 76,
+            "TextId": "__SingleUse_OPPC",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 20
+            }
+          },
+          {
+            "Type": "TextArea",
+            "Name": "TEMPVAL",
+            "X": 9,
+            "Y": 79,
+            "Width": 303,
+            "Height": 43,
+            "TextId": "__SingleUse_0MT1",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 20
+            }
           },
           {
             "Type": "TextArea",
             "Name": "ADCVAL",
             "X": 9,
-            "Y": 321,
+            "Y": 147,
             "Width": 303,
             "Height": 43,
-            "TextId": "__SingleUse_OPPC",
+            "TextId": "__SingleUse_JSQP",
             "TextRotation": "0",
             "Color": {
               "Red": 255,

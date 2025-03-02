@@ -10,13 +10,19 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_OPPC" Alignment="Center" TypographyId="Typography_00">
+      <Text Id="__SingleUse_JSQP" Alignment="Center" TypographyId="Typography_00">
         <Translation Language="GB">ADC VALUE:&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_0MT1" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">Temp:&lt;value&gt; C</Translation>
+      </Text>
+      <Text Id="__SingleUse_OPPC" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">Humidity:&lt;value&gt;%</Translation>
       </Text>
     </TextGroup>
   </Texts>
   <Typographies>
     <Typography Id="Default" Font="Asap-Regular.ttf" Size="80" Bpp="4" IsVector="no" Direction="LTR" WildcardCharacterRanges="0-9" />
-    <Typography Id="Typography_00" Font="verdana.ttf" Size="30" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0-9" />
+    <Typography Id="Typography_00" Font="verdana.ttf" Size="30" Bpp="4" IsVector="no" Direction="LTR" FallbackCharacter="?" WildcardCharacterRanges="0x0-0x7F" />
   </Typographies>
 </TextDatabase>

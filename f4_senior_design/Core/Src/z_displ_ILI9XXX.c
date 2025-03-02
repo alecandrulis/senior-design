@@ -1219,9 +1219,9 @@ void touchgfxDisplayDriverTransmitBlock(const uint8_t* pixels, uint16_t x, uint1
  * 			the tick timer for TouchGFX
  *********************************************************/
 #ifdef DISPLAY_USING_TOUCHGFX
-void HAL_TIM_PeriodElapsedCallback (TIM_HandleTypeDef * htim){
-	if (htim==&TGFX_T){
-		  touchgfxSignalVSync();
-	}
-}
+//void HAL_TIM_PeriodElapsedCallback (TIM_HandleTypeDef * htim){
+//	if (htim==&TGFX_T){
+//		  touchgfxSignalVSync();
+//	}
+//}
 #endif //DISPLAY_USING_TOUCHGFX

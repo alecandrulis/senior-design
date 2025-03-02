@@ -15,7 +15,7 @@ public:
     virtual void ToggleLights();
     virtual void setVal(uint32_t val);
     virtual void setHumidity(float humidity);
-    virtual void setTemp(float temp);
+    virtual void setTemperature(float temp);
 
     void updateGFXElements();
 protected:

@@ -13,18 +13,38 @@ MainViewBase::MainViewBase() :
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    toggleButton1.setXY(88, 210);
-    toggleButton1.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_TOGGLEBUTTON_LARGE_ROUND_ON_ACTIVE_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_TOGGLEBUTTON_LARGE_ROUND_OFF_DARK_ID));
+    image1.setXY(0, 0);
+    image1.setBitmap(touchgfx::Bitmap(BITMAP_PIC_ID));
+    add(image1);
+
+    toggleButton1.setXY(88, 383);
+    toggleButton1.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_TOGGLEBUTTON_LARGE_ROUNDED_ON_ACTION_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_TOGGLEBUTTON_LARGE_ROUNDED_OFF_NORMAL_ID));
     toggleButton1.forceState(true);
     toggleButton1.setAction(buttonCallback);
     add(toggleButton1);
 
-    ADCVAL.setPosition(9, 321, 303, 43);
+    HUMVAL.setPosition(9, 24, 303, 76);
+    HUMVAL.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    HUMVAL.setLinespacing(0);
+    HUMVALBuffer[0] = 0;
+    HUMVAL.setWildcard(HUMVALBuffer);
+    HUMVAL.setTypedText(touchgfx::TypedText(T___SINGLEUSE_OPPC));
+    add(HUMVAL);
+
+    TEMPVAL.setPosition(9, 79, 303, 43);
+    TEMPVAL.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    TEMPVAL.setLinespacing(0);
+    TEMPVALBuffer[0] = 0;
+    TEMPVAL.setWildcard(TEMPVALBuffer);
+    TEMPVAL.setTypedText(touchgfx::TypedText(T___SINGLEUSE_0MT1));
+    add(TEMPVAL);
+
+    ADCVAL.setPosition(9, 147, 303, 43);
     ADCVAL.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     ADCVAL.setLinespacing(0);
     ADCVALBuffer[0] = 0;
     ADCVAL.setWildcard(ADCVALBuffer);
-    ADCVAL.setTypedText(touchgfx::TypedText(T___SINGLEUSE_OPPC));
+    ADCVAL.setTypedText(touchgfx::TypedText(T___SINGLEUSE_JSQP));
     add(ADCVAL);
 }
 

@@ -8,6 +8,7 @@
 #include <mvp/View.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
 #include <touchgfx/widgets/Box.hpp>
+#include <touchgfx/widgets/Image.hpp>
 #include <touchgfx/widgets/ToggleButton.hpp>
 #include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 
@@ -35,12 +36,19 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
+    touchgfx::Image image1;
     touchgfx::ToggleButton toggleButton1;
+    touchgfx::TextAreaWithOneWildcard HUMVAL;
+    touchgfx::TextAreaWithOneWildcard TEMPVAL;
     touchgfx::TextAreaWithOneWildcard ADCVAL;
 
     /*
      * Wildcard Buffers
      */
+    static const uint16_t HUMVAL_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar HUMVALBuffer[HUMVAL_SIZE];
+    static const uint16_t TEMPVAL_SIZE = 20;
+    touchgfx::Unicode::UnicodeChar TEMPVALBuffer[TEMPVAL_SIZE];
     static const uint16_t ADCVAL_SIZE = 20;
     touchgfx::Unicode::UnicodeChar ADCVALBuffer[ADCVAL_SIZE];
 

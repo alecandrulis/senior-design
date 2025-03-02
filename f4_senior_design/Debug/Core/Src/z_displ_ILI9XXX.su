@@ -12,4 +12,3 @@
 ../Core/Src/z_displ_ILI9XXX.c:1123:11:Displ_BackLight	16	static,ignoring_inline_asm
 ../Core/Src/z_displ_ILI9XXX.c:1192:5:touchgfxDisplayDriverTransmitActive	4	static
 ../Core/Src/z_displ_ILI9XXX.c:1206:6:touchgfxDisplayDriverTransmitBlock	32	static
-../Core/Src/z_displ_ILI9XXX.c:1222:6:HAL_TIM_PeriodElapsedCallback	16	static

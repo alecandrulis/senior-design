@@ -42,7 +42,6 @@ public:
     void tick();
 
 
-    uint32_t getADCVal() const {return adcVal;}
 protected:
     /**
      * Pointer to the currently active presenter.
@@ -50,7 +49,6 @@ protected:
     ModelListener* modelListener;
 
 private:
-    uint32_t adcVal;
 
 
 };

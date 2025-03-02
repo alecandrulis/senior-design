@@ -20,9 +20,10 @@ void MainPresenter::notifyADCChanged(uint32_t newVal){
 }
 
 void MainPresenter::notifyTemperatureChanged(float newTemp){
+	view.setTemperature(newTemp);
 
 }
 
 void MainPresenter::notifyHumidityChanged(float newHumidity){
-
+	view.setHumidity(newHumidity);
 }

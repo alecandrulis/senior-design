@@ -53,6 +53,7 @@ DMA_HandleTypeDef hdma_spi2_tx;
 
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
+TIM_HandleTypeDef htim4;
 
 /* USER CODE BEGIN PV */
 uint32_t value_adc;
@@ -73,6 +74,7 @@ static void MX_TIM3_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_I2C2_Init(void);
+static void MX_TIM4_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -118,10 +120,11 @@ int main(void)
   MX_ADC1_Init();
   MX_TIM2_Init();
   MX_I2C2_Init();
+  MX_TIM4_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
-
+  //HAL_TIM_PWM_Init(&htim2);
 
 
 
@@ -134,19 +137,35 @@ int main(void)
   Displ_BackLight('I');  					// initialize backlight
   HAL_TIM_Base_Start_IT(&TGFX_T);			// start TouchGFX tick timer
   HAL_ADC_Start_DMA(&hadc1,(uint32_t*)&value_adc,1);
+  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+  htim2.Instance->CCR1 = 2048;
+  HAL_TIM_Base_Start_IT(&htim4);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  while(HAL_I2C_IsDeviceReady(&hi2c2, 0xB8,1, HAL_MAX_DELAY) != HAL_OK){
+
+  }
 
   while (1)
   {
 
 	  HAL_ADC_Start_DMA(&hadc1,(uint32_t*)&value_adc,1);
+//htim2.Instance->CCR1 = value_adc;
 	  HAL_I2C_Master_Transmit (&hi2c2, 0xB8, i2c_buffer, 3, 100);
 	  HAL_I2C_Master_Receive (&hi2c2, 0xB9, i2c_return, 8, 100);
-	  temp = ((i2c_return[4] << 8) + i2c_return[5]) / 10;
-	  hum = ((i2c_return[2] << 8) + i2c_return[3]) / 10;
+	  temp = ((i2c_return[4] << 8) + i2c_return[5]);
+	  hum = ((i2c_return[2] << 8) + i2c_return[3]);
+	  temp = floor(temp)/10.0;
+	  hum = floor(hum)/10.0;
+//	  htim2.Instance->CCR1 = fmax(0.0f, fmin(4095.0f, 4095.0f * (1.0f - pow(fabs(temp - 25.0f) / 5.0f, 0.5f))));
+	  if (temp < 25){
+		  htim2.Instance->CCR1 = 4095;
+	  } else{
+		  htim2.Instance->CCR1 = 0;
+
+	  }
 
 
 	  //HAL_Delay(100);
@@ -248,7 +267,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
   hadc1.Init.ScanConvMode = DISABLE;
-  hadc1.Init.ContinuousConvMode = DISABLE;
+  hadc1.Init.ContinuousConvMode = ENABLE;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
@@ -394,9 +413,9 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 0;
+  htim2.Init.Prescaler = 100;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 4294967295;
+  htim2.Init.Period = 4096;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
@@ -479,6 +498,51 @@ static void MX_TIM3_Init(void)
 }
 
 /**
+  * @brief TIM4 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM4_Init(void)
+{
+
+  /* USER CODE BEGIN TIM4_Init 0 */
+
+  /* USER CODE END TIM4_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM4_Init 1 */
+
+  /* USER CODE END TIM4_Init 1 */
+  htim4.Instance = TIM4;
+  htim4.Init.Prescaler = 59999;
+  htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim4.Init.Period = 1499;
+  htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim4, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM4_Init 2 */
+
+  /* USER CODE END TIM4_Init 2 */
+
+}
+
+/**
   * Enable DMA controller clock
   */
 static void MX_DMA_Init(void)
@@ -525,7 +589,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, DISPL_RST_Pin|GPIO_PIN_8, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, DISPL_RST_Pin|GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -568,8 +632,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(DISPL_RST_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PB8 */
-  GPIO_InitStruct.Pin = GPIO_PIN_8;
+  /*Configure GPIO pins : PB8 PB9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -584,7 +648,17 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  // Check which version of the timer triggered this callback and toggle LED
+  if (htim == &htim4)
+  {
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_9);
+  }
+	if (htim==&TGFX_T){
+		  touchgfxSignalVSync();
+	}
+}
 /* USER CODE END 4 */
 
 /**

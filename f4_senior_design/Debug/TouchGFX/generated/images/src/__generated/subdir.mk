@@ -5,16 +5,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_round_off_dark.cpp \
-../TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_round_on_active.cpp 
+../TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_rounded_off_normal.cpp \
+../TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_rounded_on_action.cpp 
 
 OBJS += \
-./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_round_off_dark.o \
-./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_round_on_active.o 
+./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_rounded_off_normal.o \
+./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_rounded_on_action.o 
 
 CPP_DEPS += \
-./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_round_off_dark.d \
-./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_round_on_active.d 
+./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_rounded_off_normal.d \
+./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_rounded_on_action.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -24,7 +24,7 @@ TouchGFX/generated/images/src/__generated/%.o TouchGFX/generated/images/src/__ge
 clean: clean-TouchGFX-2f-generated-2f-images-2f-src-2f-__generated
 
 clean-TouchGFX-2f-generated-2f-images-2f-src-2f-__generated:
-	-$(RM) ./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_round_off_dark.cyclo ./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_round_off_dark.d ./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_round_off_dark.o ./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_round_off_dark.su ./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_round_on_active.cyclo ./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_round_on_active.d ./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_round_on_active.o ./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_round_on_active.su
+	-$(RM) ./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_rounded_off_normal.cyclo ./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_rounded_off_normal.d ./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_rounded_off_normal.o ./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_rounded_off_normal.su ./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_rounded_on_action.cyclo ./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_rounded_on_action.d ./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_rounded_on_action.o ./TouchGFX/generated/images/src/__generated/image_alternate_theme_images_widgets_togglebutton_large_rounded_on_action.su
 
 .PHONY: clean-TouchGFX-2f-generated-2f-images-2f-src-2f-__generated
 

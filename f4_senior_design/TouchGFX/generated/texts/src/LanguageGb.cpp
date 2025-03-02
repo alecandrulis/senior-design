@@ -11,5 +11,7 @@ KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE;
 TEXT_LOCATION_FLASH_PRAGMA
 KEEP extern const uint32_t indicesGb[] TEXT_LOCATION_FLASH_ATTRIBUTE = {
     10, // T_TEXTID1: "<>"
-    0   // T___SINGLEUSE_OPPC: "ADC VALUE:<>"
+    0,  // T___SINGLEUSE_JSQP: "ADC VALUE:<>"
+    24, // T___SINGLEUSE_0MT1: "Temp:<> C"
+    12  // T___SINGLEUSE_OPPC: "Humidity:<>%"
 };

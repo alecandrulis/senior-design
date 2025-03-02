@@ -70,12 +70,14 @@ void MainView::setVal(uint32_t val){
 }
 
 void MainView::setTemperature(float temp){
-
+	Unicode::snprintfFloat(TEMPVALBuffer, TEMPVAL_SIZE, "%.1f", temp);
+	TEMPVAL.invalidate();
 
 }
 
 void MainView::setHumidity(float humidity){
-
+	Unicode::snprintfFloat(HUMVALBuffer, HUMVAL_SIZE, "%.1f", humidity);
+	HUMVAL.invalidate();
 
 
 }
