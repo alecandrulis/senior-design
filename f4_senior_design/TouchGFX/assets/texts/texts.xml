@@ -11,7 +11,7 @@
     </TextGroup>
     <TextGroup Id="Unsorted">
       <Text Id="__SingleUse_JSQP" Alignment="Center" TypographyId="Typography_00">
-        <Translation Language="GB">ADC VALUE:&lt;value&gt;</Translation>
+        <Translation Language="GB">PWM VALUE:&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_0MT1" Alignment="Center" TypographyId="Typography_00">
         <Translation Language="GB">Temp:&lt;value&gt; C</Translation>

@@ -38,6 +38,7 @@ extern "C" {
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+extern TIM_HandleTypeDef htim4;
 extern uint32_t value_adc;
 extern float temp;
 extern float hum;

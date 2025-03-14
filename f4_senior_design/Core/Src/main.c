@@ -1,20 +1,20 @@
 /* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file           : main.c
-  * @brief          : Main program body
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2025 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+	/**
+	  ******************************************************************************
+	  * @file           : main.c
+	  * @brief          : Main program body
+	  ******************************************************************************
+	  * @attention
+	  *
+	  * Copyright (c) 2025 STMicroelectronics.
+	  * All rights reserved.
+	  *
+	  * This software is licensed under terms that can be found in the LICENSE file
+	  * in the root directory of this software component.
+	  * If no LICENSE file comes with this software, it is provided AS-IS.
+	  *
+	  ******************************************************************************
+	  */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
@@ -56,11 +56,11 @@ TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim4;
 
 /* USER CODE BEGIN PV */
-uint32_t value_adc;
-float temp;
-float hum;
-uint8_t i2c_return[8];
-uint8_t i2c_buffer[3] = {0x03, 0x00, 0x04};
+	uint32_t value_adc;
+	float temp;
+	float hum;
+	uint8_t i2c_return[8];
+	uint8_t i2c_buffer[3] = {0x03, 0x00, 0x04};
 
 /* USER CODE END PV */
 
@@ -124,60 +124,80 @@ int main(void)
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
-  //HAL_TIM_PWM_Init(&htim2);
+	  //HAL_TIM_PWM_Init(&htim2);
 
 
 
-  Displ_Init(Displ_Orientat_0);			// initialize display controller - set orientation parameter as per TouchGFX setup
-  touchgfxSignalVSync();
-  Displ_Init(Displ_Orientat_0);			// initialize display controller - set orientation parameter as per TouchGFX setup
-  touchgfxSignalVSync();
+	  Displ_Init(Displ_Orientat_0);			// initialize display controller - set orientation parameter as per TouchGFX setup
+	  touchgfxSignalVSync();
+	  Displ_Init(Displ_Orientat_0);			// initialize display controller - set orientation parameter as per TouchGFX setup
+	  touchgfxSignalVSync();
 
 
-  Displ_BackLight('I');  					// initialize backlight
-  HAL_TIM_Base_Start_IT(&TGFX_T);			// start TouchGFX tick timer
-  HAL_ADC_Start_DMA(&hadc1,(uint32_t*)&value_adc,1);
-  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
-  htim2.Instance->CCR1 = 2048;
-  HAL_TIM_Base_Start_IT(&htim4);
+	  Displ_BackLight('I');  					// initialize backlight
+	  HAL_TIM_Base_Start_IT(&TGFX_T);			// start TouchGFX tick timer
+	  HAL_ADC_Start_DMA(&hadc1,(uint32_t*)&value_adc,1);
+	  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+
+	  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_2);
+	  htim4.Instance->CCR2 = 10;
+	  htim2.Instance->CCR1 = 15000;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while(HAL_I2C_IsDeviceReady(&hi2c2, 0xB8,1, HAL_MAX_DELAY) != HAL_OK){
+//	  while(HAL_I2C_IsDeviceReady(&hi2c2, 0xB8,1, HAL_MAX_DELAY) != HAL_OK){
+//
+//	  }
 
-  }
+	  while (1)
+	  {
 
-  while (1)
-  {
+		  HAL_ADC_Start_DMA(&hadc1,(uint32_t*)&value_adc,1);
+		  HAL_I2C_Master_Transmit (&hi2c2, 0xB8, i2c_buffer, 3, 100);
+		  HAL_I2C_Master_Receive (&hi2c2, 0xB9, i2c_return, 8, 100);
+		  temp = ((i2c_return[4] << 8) + i2c_return[5]);
+		  hum = ((i2c_return[2] << 8) + i2c_return[3]);
+		  temp = floor(temp)/10.0;
+		  hum = floor(hum)/10.0;
 
-	  HAL_ADC_Start_DMA(&hadc1,(uint32_t*)&value_adc,1);
-//htim2.Instance->CCR1 = value_adc;
-	  HAL_I2C_Master_Transmit (&hi2c2, 0xB8, i2c_buffer, 3, 100);
-	  HAL_I2C_Master_Receive (&hi2c2, 0xB9, i2c_return, 8, 100);
-	  temp = ((i2c_return[4] << 8) + i2c_return[5]);
-	  hum = ((i2c_return[2] << 8) + i2c_return[3]);
-	  temp = floor(temp)/10.0;
-	  hum = floor(hum)/10.0;
-//	  htim2.Instance->CCR1 = fmax(0.0f, fmin(4095.0f, 4095.0f * (1.0f - pow(fabs(temp - 25.0f) / 5.0f, 0.5f))));
-	  if (temp < 25){
-		  htim2.Instance->CCR1 = 4095;
-	  } else{
-		  htim2.Instance->CCR1 = 0;
+		  //htim4.Instance->CCR2 = (value_adc/4096.0) * 100;
+		  if (temp < 23){
+			  htim4.Instance->CCR2 = 10;
+		  }
+		  if (temp > 24){
+			  htim4.Instance->CCR2 = 0;
+		  		  }
+//		  else{
+//			  htim2.Instance->CCR1 = 0;
+//
+//		  }
+		  //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10,1);
 
-	  }
+		  if (hum <=50){
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10,1);
+		  }
+		  if (hum >=80){
+				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10,0);
+			  }
+
+	//	  for (int i = 0; i <= 8; i++){
+	//		  htim2.Instance->CCR1 = 4096 - (512 * i); //100
+	//		  HAL_Delay(2000);
+	//
+	//	  }
+
+		  //HAL_Delay(100);
+		  //HAL_I2C_Master_Receive (&hi2c2, 0xB9, data, 5, 100);
+
+		  //HAL_I2C_Mem_Read (&hi2c2, 0xB8, 0x00, 0, value_humidity_high, 5, 1000);
+		  //HAL_I2C_Master_Transmit (I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint8_t* pData, uint16_t Size, uint32_t Timeout);
+		  //HAL_I2C_Master_Receive (I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint8_t* pData, uint16_t Size, uint32_t Timeout);
+	//	  HAL_I2C_Mem_Write (I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t * pData, uint16_t Size, uint32_t Timeout);
 
 
-	  //HAL_Delay(100);
-	  //HAL_I2C_Master_Receive (&hi2c2, 0xB9, data, 5, 100);
-
-	  //HAL_I2C_Mem_Read (&hi2c2, 0xB8, 0x00, 0, value_humidity_high, 5, 1000);
-	  //HAL_I2C_Master_Transmit (I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint8_t* pData, uint16_t Size, uint32_t Timeout);
-	  //HAL_I2C_Master_Receive (I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint8_t* pData, uint16_t Size, uint32_t Timeout);
-//	  HAL_I2C_Mem_Write (I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t * pData, uint16_t Size, uint32_t Timeout);
-
-
-	  //HAL_I2C_Mem_Read (I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t * pData, uint16_t Size, uint32_t Timeout);
+		  //HAL_I2C_Mem_Read (I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t * pData, uint16_t Size, uint32_t Timeout);
 
 
 
@@ -185,7 +205,7 @@ int main(void)
 
   MX_TouchGFX_Process();
     /* USER CODE BEGIN 3 */
-  }
+	  }
   /* USER CODE END 3 */
 }
 
@@ -413,9 +433,9 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 100;
+  htim2.Init.Prescaler = 59999;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 4096;
+  htim2.Init.Period = 29999;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
@@ -473,7 +493,7 @@ static void MX_TIM3_Init(void)
   htim3.Instance = TIM3;
   htim3.Init.Prescaler = 9999;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 149;
+  htim3.Init.Period = 299;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
@@ -511,14 +531,15 @@ static void MX_TIM4_Init(void)
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
+  TIM_OC_InitTypeDef sConfigOC = {0};
 
   /* USER CODE BEGIN TIM4_Init 1 */
 
   /* USER CODE END TIM4_Init 1 */
   htim4.Instance = TIM4;
-  htim4.Init.Prescaler = 59999;
+  htim4.Init.Prescaler = 44999;
   htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim4.Init.Period = 1499;
+  htim4.Init.Period = 19;
   htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
@@ -530,15 +551,28 @@ static void MX_TIM4_Init(void)
   {
     Error_Handler();
   }
+  if (HAL_TIM_PWM_Init(&htim4) != HAL_OK)
+  {
+    Error_Handler();
+  }
   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
   {
     Error_Handler();
   }
+  sConfigOC.OCMode = TIM_OCMODE_PWM1;
+  sConfigOC.Pulse = 0;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  if (HAL_TIM_PWM_ConfigChannel(&htim4, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
+  {
+    Error_Handler();
+  }
   /* USER CODE BEGIN TIM4_Init 2 */
 
   /* USER CODE END TIM4_Init 2 */
+  HAL_TIM_MspPostInit(&htim4);
 
 }
 
@@ -580,7 +614,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LD2_Pin|DISPL_LED_Pin|DISPL_DC_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LD2_Pin|DISPL_LED_Pin|DISPL_DC_Pin|GPIO_PIN_10, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(DISPL_CS_GPIO_Port, DISPL_CS_Pin, GPIO_PIN_SET);
@@ -625,6 +659,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(TOUCH_INT_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : PA10 */
+  GPIO_InitStruct.Pin = GPIO_PIN_10;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
   /*Configure GPIO pin : DISPL_RST_Pin */
   GPIO_InitStruct.Pin = DISPL_RST_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -648,17 +689,14 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-  // Check which version of the timer triggered this callback and toggle LED
-  if (htim == &htim4)
-  {
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_9);
-  }
-	if (htim==&TGFX_T){
-		  touchgfxSignalVSync();
+	void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+	{
+	  // Check which version of the timer triggered this callback and toggle LED
+		if (htim==&TGFX_T){
+			  //Displ_Init(Displ_Orientat_0);			// initialize display controller - set orientation parameter as per TouchGFX setup
+			  touchgfxSignalVSync();
+		}
 	}
-}
 /* USER CODE END 4 */
 
 /**
@@ -668,11 +706,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
-  __disable_irq();
-  while (1)
-  {
-  }
+	  /* User can add his own implementation to report the HAL error return state */
+	  __disable_irq();
+	  while (1)
+	  {
+	  }
   /* USER CODE END Error_Handler_Debug */
 }
 
@@ -687,8 +725,8 @@ void Error_Handler(void)
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
-  /* User can add his own implementation to report the file name and line number,
-     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+	  /* User can add his own implementation to report the file name and line number,
+		 ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
