@@ -20,6 +20,9 @@ public:
         gotoMainScreenNoTransition();
     }
 
+    // humidity_screen
+    void gotohumidity_screenScreenNoTransition();
+
     // Main
     void gotoMainScreenNoTransition();
 
@@ -27,6 +30,9 @@ protected:
     touchgfx::Callback<FrontendApplicationBase> transitionCallback;
     FrontendHeap& frontendHeap;
     Model& model;
+
+    // humidity_screen
+    void gotohumidity_screenScreenNoTransitionImpl();
 
     // Main
     void gotoMainScreenNoTransitionImpl();

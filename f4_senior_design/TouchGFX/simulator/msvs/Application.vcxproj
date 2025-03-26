@@ -24,6 +24,15 @@
     <ClCompile Include="..\..\generated\gui_generated\src\main_screen\MainViewBase.cpp"/>
     <ClCompile Include="..\..\gui\src\model\Model.cpp"/>
     <ClCompile Include="..\..\generated\simulator\src\video\SoftwareMJPEGDecoder.cpp"/>
+    <ClCompile Include="..\..\gui\src\humidity_screen_screen\humidity_screenPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\humidity_screen_screen\humidity_screenView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\humidity_screen_screen\humidity_screenViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\light_screen_screen\light_screenPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\light_screen_screen\light_screenView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\light_screen_screen\light_screenViewBase.cpp"/>
+    <ClCompile Include="..\..\gui\src\temperature_screen_screen\temperature_screenPresenter.cpp"/>
+    <ClCompile Include="..\..\gui\src\temperature_screen_screen\temperature_screenView.cpp"/>
+    <ClCompile Include="..\..\generated\gui_generated\src\temperature_screen_screen\temperature_screenViewBase.cpp"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(ApplicationRoot)\assets\texts\texts.xml"/>
@@ -177,6 +186,15 @@
     <ClInclude Include="..\..\gui\include\gui\model\ModelListener.hpp"/>
     <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\common\SimConstants.hpp"/>
     <ClInclude Include="..\..\generated\simulator\include\simulator\video\SoftwareMJPEGDecoder.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\humidity_screen_screen\humidity_screenPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\humidity_screen_screen\humidity_screenView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\humidity_screen_screen\humidity_screenViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\light_screen_screen\light_screenPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\light_screen_screen\light_screenView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\light_screen_screen\light_screenViewBase.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\temperature_screen_screen\temperature_screenPresenter.hpp"/>
+    <ClInclude Include="..\..\gui\include\gui\temperature_screen_screen\temperature_screenView.hpp"/>
+    <ClInclude Include="..\..\generated\gui_generated\include\gui_generated\temperature_screen_screen\temperature_screenViewBase.hpp"/>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="$(ApplicationRoot)\generated\simulator\touchgfx.rc"/>

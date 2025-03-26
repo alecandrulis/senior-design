@@ -1,0 +1,16 @@
+../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:37:18:virtual void touchgfx::Presenter::activate()	1
+../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:47:18:virtual void touchgfx::Presenter::deactivate()	1
+../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:52:13:touchgfx::Presenter::~Presenter()	1
+../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:52:13:virtual touchgfx::Presenter::~Presenter()	1
+../Middlewares/ST/touchgfx/framework/include/mvp/Presenter.hpp:58:5:touchgfx::Presenter::Presenter()	1
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:18:5:ModelListener::ModelListener()	1
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:20:13:ModelListener::~ModelListener()	1
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:20:13:virtual ModelListener::~ModelListener()	1
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:32:18:virtual void ModelListener::notifyADCChanged(uint32_t)	1
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:33:18:virtual void ModelListener::notifyTemperatureChanged(float)	1
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:34:18:virtual void ModelListener::notifyHumidityChanged(float)	1
+../TouchGFX/gui/include/gui/light_screen_screen/light_screenPresenter.hpp:28:13:light_screenPresenter::~light_screenPresenter()	1
+../TouchGFX/gui/include/gui/light_screen_screen/light_screenPresenter.hpp:28:13:virtual light_screenPresenter::~light_screenPresenter()	1
+../TouchGFX/gui/src/light_screen_screen/light_screenPresenter.cpp:4:1:light_screenPresenter::light_screenPresenter(light_screenView&)	1
+../TouchGFX/gui/src/light_screen_screen/light_screenPresenter.cpp:10:6:virtual void light_screenPresenter::activate()	1
+../TouchGFX/gui/src/light_screen_screen/light_screenPresenter.cpp:15:6:virtual void light_screenPresenter::deactivate()	1

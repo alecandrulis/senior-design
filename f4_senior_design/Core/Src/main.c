@@ -124,7 +124,7 @@ int main(void)
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
-	  //HAL_TIM_PWM_Init(&htim2);
+	  HAL_TIM_PWM_Init(&htim2);
 
 
 

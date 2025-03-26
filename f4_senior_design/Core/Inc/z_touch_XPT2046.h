@@ -51,7 +51,7 @@ bool STM32TouchController::sampleTouch(int32_t& x, int32_t& y)
  *   "dragging" widgets
  * (see GitHub page indicated on top for details)
  **************************************************/
-#define DELAY_TO_KEY_REPEAT 0
+#define DELAY_TO_KEY_REPEAT -1
 
 /*|||||||| END OF USER/PROJECT PARAMETERS ||||||||*/
 

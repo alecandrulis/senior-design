@@ -12,6 +12,12 @@
 #include <gui/common/FrontendApplication.hpp>
 #include <gui/model/Model.hpp>
 
+#include <gui/light_screen_screen/light_screenView.hpp>
+#include <gui/light_screen_screen/light_screenPresenter.hpp>
+#include <gui/temperature_screen_screen/temperature_screenView.hpp>
+#include <gui/temperature_screen_screen/temperature_screenPresenter.hpp>
+#include <gui/humidity_screen_screen/humidity_screenView.hpp>
+#include <gui/humidity_screen_screen/humidity_screenPresenter.hpp>
 #include <gui/main_screen/MainView.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
 
@@ -36,8 +42,11 @@ public:
      * A list of all view types. Must end with meta::Nil.
      * @note All view types used in the application MUST be added to this list!
      */
-    typedef touchgfx::meta::TypeList< MainView,
-            touchgfx::meta::Nil
+    typedef touchgfx::meta::TypeList< light_screenView,
+            touchgfx::meta::TypeList< temperature_screenView,
+            touchgfx::meta::TypeList< humidity_screenView,
+            touchgfx::meta::TypeList< MainView,
+            touchgfx::meta::Nil > > >
             > GeneratedViewTypes;
 
     /**
@@ -49,8 +58,11 @@ public:
      * A list of all presenter types. Must end with meta::Nil.
      * @note All presenter types used in the application MUST be added to this list!
      */
-    typedef touchgfx::meta::TypeList< MainPresenter,
-            touchgfx::meta::Nil
+    typedef touchgfx::meta::TypeList< light_screenPresenter,
+            touchgfx::meta::TypeList< temperature_screenPresenter,
+            touchgfx::meta::TypeList< humidity_screenPresenter,
+            touchgfx::meta::TypeList< MainPresenter,
+            touchgfx::meta::Nil > > >
             > GeneratedPresenterTypes;
 
     /**

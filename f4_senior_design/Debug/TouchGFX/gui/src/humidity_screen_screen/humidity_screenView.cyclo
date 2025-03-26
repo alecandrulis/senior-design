@@ -1,0 +1,10 @@
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:115:18:virtual void touchgfx::Screen::tearDownScreen()	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	1
+../TouchGFX/generated/gui_generated/include/gui_generated/humidity_screen_screen/humidity_screenViewBase.hpp:25:18:virtual void humidity_screenViewBase::ToggleLights()	1
+../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenView.hpp:11:13:humidity_screenView::~humidity_screenView()	1
+../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenView.hpp:11:13:virtual humidity_screenView::~humidity_screenView()	1
+../TouchGFX/gui/src/humidity_screen_screen/humidity_screenView.cpp:3:1:humidity_screenView::humidity_screenView()	1
+../TouchGFX/gui/src/humidity_screen_screen/humidity_screenView.cpp:8:6:virtual void humidity_screenView::setupScreen()	1
+../TouchGFX/gui/src/humidity_screen_screen/humidity_screenView.cpp:13:6:virtual void humidity_screenView::tearDownScreen()	1

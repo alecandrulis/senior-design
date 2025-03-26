@@ -1,5 +1,5 @@
 #include <gui/main_screen/MainView.hpp>
-#include "BitmapDatabase.hpp"
+//#include "BitmapDatabase.hpp"
 #include "main.h"
 
 const uint8_t UPPER_LIMIT = 42;

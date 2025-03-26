@@ -7,23 +7,20 @@
 #include <texts/TextKeysAndLanguages.hpp>
 
 MainViewBase::MainViewBase() :
-    buttonCallback(this, &MainViewBase::buttonCallbackHandler)
+    buttonCallback(this, &MainViewBase::buttonCallbackHandler),
+    flexButtonCallback(this, &MainViewBase::flexButtonCallbackHandler)
 {
-    __background.setPosition(0, 0, 320, 480);
+    __background.setPosition(0, 0, 480, 320);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    image1.setXY(0, 0);
-    image1.setBitmap(touchgfx::Bitmap(BITMAP_PIC_ID));
-    add(image1);
-
-    toggleButton1.setXY(88, 383);
+    toggleButton1.setXY(229, 236);
     toggleButton1.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_TOGGLEBUTTON_LARGE_ROUNDED_ON_ACTION_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_TOGGLEBUTTON_LARGE_ROUNDED_OFF_NORMAL_ID));
     toggleButton1.forceState(true);
     toggleButton1.setAction(buttonCallback);
     add(toggleButton1);
 
-    HUMVAL.setPosition(9, 24, 303, 76);
+    HUMVAL.setPosition(9, 24, 178, 48);
     HUMVAL.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     HUMVAL.setLinespacing(0);
     HUMVALBuffer[0] = 0;
@@ -31,7 +28,7 @@ MainViewBase::MainViewBase() :
     HUMVAL.setTypedText(touchgfx::TypedText(T___SINGLEUSE_OPPC));
     add(HUMVAL);
 
-    TEMPVAL.setPosition(9, 79, 303, 43);
+    TEMPVAL.setPosition(9, 79, 178, 46);
     TEMPVAL.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     TEMPVAL.setLinespacing(0);
     TEMPVALBuffer[0] = 0;
@@ -39,13 +36,38 @@ MainViewBase::MainViewBase() :
     TEMPVAL.setTypedText(touchgfx::TypedText(T___SINGLEUSE_0MT1));
     add(TEMPVAL);
 
-    ADCVAL.setPosition(9, 147, 303, 43);
+    ADCVAL.setPosition(98, 183, 303, 43);
     ADCVAL.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     ADCVAL.setLinespacing(0);
     ADCVALBuffer[0] = 0;
     ADCVAL.setWildcard(ADCVALBuffer);
     ADCVAL.setTypedText(touchgfx::TypedText(T___SINGLEUSE_JSQP));
     add(ADCVAL);
+
+    textArea1.setXY(0, 135);
+    textArea1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    textArea1.setLinespacing(0);
+    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_E175));
+    add(textArea1);
+
+    flexButton1.setBoxWithBorderPosition(0, 0, 50, 50);
+    flexButton1.setBorderSize(5);
+    flexButton1.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButton1.setAction(flexButtonCallback);
+    flexButton1.setPosition(401, 13, 50, 50);
+    add(flexButton1);
+
+    flexButton1_1.setBoxWithBorderPosition(0, 0, 50, 50);
+    flexButton1_1.setBorderSize(5);
+    flexButton1_1.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButton1_1.setPosition(401, 72, 50, 50);
+    add(flexButton1_1);
+
+    flexButton1_2.setBoxWithBorderPosition(0, 0, 50, 50);
+    flexButton1_2.setBorderSize(5);
+    flexButton1_2.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButton1_2.setPosition(401, 127, 50, 50);
+    add(flexButton1_2);
 }
 
 MainViewBase::~MainViewBase()
@@ -66,5 +88,16 @@ void MainViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
         //When toggleButton1 clicked call virtual function
         //Call ToggleLights
         ToggleLights();
+    }
+}
+
+void MainViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src)
+{
+    if (&src == &flexButton1)
+    {
+        //Interaction2
+        //When flexButton1 clicked change screen to humidity_screen
+        //Go to humidity_screen with no screen transition
+        application().gotohumidity_screenScreenNoTransition();
     }
 }

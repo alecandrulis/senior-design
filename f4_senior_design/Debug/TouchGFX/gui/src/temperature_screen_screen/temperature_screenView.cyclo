@@ -1,0 +1,10 @@
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:115:18:virtual void touchgfx::Screen::tearDownScreen()	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	1
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	1
+../TouchGFX/generated/gui_generated/include/gui_generated/temperature_screen_screen/temperature_screenViewBase.hpp:25:18:virtual void temperature_screenViewBase::ToggleLights()	1
+../TouchGFX/gui/include/gui/temperature_screen_screen/temperature_screenView.hpp:11:13:temperature_screenView::~temperature_screenView()	1
+../TouchGFX/gui/include/gui/temperature_screen_screen/temperature_screenView.hpp:11:13:virtual temperature_screenView::~temperature_screenView()	1
+../TouchGFX/gui/src/temperature_screen_screen/temperature_screenView.cpp:3:1:temperature_screenView::temperature_screenView()	1
+../TouchGFX/gui/src/temperature_screen_screen/temperature_screenView.cpp:8:6:virtual void temperature_screenView::setupScreen()	1
+../TouchGFX/gui/src/temperature_screen_screen/temperature_screenView.cpp:13:6:virtual void temperature_screenView::tearDownScreen()	1
