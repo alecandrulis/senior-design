@@ -42,6 +42,9 @@ extern TIM_HandleTypeDef htim4;
 extern uint32_t value_adc;
 extern float temp;
 extern float hum;
+extern float temp_set_point;
+extern float humidity_set_point;
+extern int lights_set_point;
 
 
 /* USER CODE END ET */

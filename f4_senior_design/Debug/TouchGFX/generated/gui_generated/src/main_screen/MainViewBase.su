@@ -100,11 +100,11 @@
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Button.hpp:31:7:virtual touchgfx::Button::~Button()	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/ToggleButton.hpp:32:7:touchgfx::ToggleButton::ToggleButton()	16	static
 ../TouchGFX/generated/gui_generated/src/main_screen/MainViewBase.cpp:9:1:MainViewBase::MainViewBase()	304	static
-../TouchGFX/generated/gui_generated/src/main_screen/MainViewBase.cpp:73:1:MainViewBase::~MainViewBase()	16	static
-../TouchGFX/generated/gui_generated/src/main_screen/MainViewBase.cpp:73:1:virtual MainViewBase::~MainViewBase()	16	static
-../TouchGFX/generated/gui_generated/src/main_screen/MainViewBase.cpp:78:6:virtual void MainViewBase::setupScreen()	16	static
-../TouchGFX/generated/gui_generated/src/main_screen/MainViewBase.cpp:83:6:void MainViewBase::buttonCallbackHandler(const touchgfx::AbstractButton&)	16	static
-../TouchGFX/generated/gui_generated/src/main_screen/MainViewBase.cpp:94:6:void MainViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer&)	16	static
+../TouchGFX/generated/gui_generated/src/main_screen/MainViewBase.cpp:75:1:MainViewBase::~MainViewBase()	16	static
+../TouchGFX/generated/gui_generated/src/main_screen/MainViewBase.cpp:75:1:virtual MainViewBase::~MainViewBase()	16	static
+../TouchGFX/generated/gui_generated/src/main_screen/MainViewBase.cpp:80:6:virtual void MainViewBase::setupScreen()	16	static
+../TouchGFX/generated/gui_generated/src/main_screen/MainViewBase.cpp:85:6:void MainViewBase::buttonCallbackHandler(const touchgfx::AbstractButton&)	16	static
+../TouchGFX/generated/gui_generated/src/main_screen/MainViewBase.cpp:96:6:void MainViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer&)	16	static
 ../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:39:5:touchgfx::View<T>::View() [with T = MainPresenter]	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/ClickButtonTrigger.hpp:35:7:touchgfx::ClickButtonTrigger::ClickButtonTrigger()	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/containers/buttons/ClickButtonTrigger.hpp:35:7:touchgfx::ClickButtonTrigger::~ClickButtonTrigger()	16	static

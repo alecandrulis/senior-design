@@ -27,6 +27,9 @@ public:
 
     virtual ~humidity_screenPresenter() {}
 
+    virtual void notifyHumiditySetPointChanged(float setPoint);
+
+
 private:
     humidity_screenPresenter();
 

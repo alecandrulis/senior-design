@@ -27,6 +27,8 @@ public:
 
     virtual ~light_screenPresenter() {}
 
+    virtual void notifyLightsSetPointChanged(int setPoint);
+
 private:
     light_screenPresenter();
 

@@ -85,10 +85,10 @@ TouchGFX/target/generated/TouchGFXGeneratedHAL.o: \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Core/Inc/z_displ_ILI9XXX.h ../Core/Inc/fonts.h \
  ../Core/Inc/z_touch_XPT2046.h \
- ../TouchGFX/gui/include/gui/light_screen_screen/light_screenView.hpp \
- ../TouchGFX/generated/gui_generated/include/gui_generated/light_screen_screen/light_screenViewBase.hpp \
+ ../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenView.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/humidity_screen_screen/humidity_screenViewBase.hpp \
  ../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp \
- ../TouchGFX/gui/include/gui/light_screen_screen/light_screenPresenter.hpp \
+ ../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenPresenter.hpp \
  ../TouchGFX/gui/include/gui/model/ModelListener.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp \
@@ -119,9 +119,9 @@ TouchGFX/target/generated/TouchGFXGeneratedHAL.o: \
  ../TouchGFX/gui/include/gui/temperature_screen_screen/temperature_screenView.hpp \
  ../TouchGFX/generated/gui_generated/include/gui_generated/temperature_screen_screen/temperature_screenViewBase.hpp \
  ../TouchGFX/gui/include/gui/temperature_screen_screen/temperature_screenPresenter.hpp \
- ../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenView.hpp \
- ../TouchGFX/generated/gui_generated/include/gui_generated/humidity_screen_screen/humidity_screenViewBase.hpp \
- ../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenPresenter.hpp \
+ ../TouchGFX/gui/include/gui/light_screen_screen/light_screenView.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/light_screen_screen/light_screenViewBase.hpp \
+ ../TouchGFX/gui/include/gui/light_screen_screen/light_screenPresenter.hpp \
  ../TouchGFX/gui/include/gui/main_screen/MainView.hpp \
  ../TouchGFX/generated/gui_generated/include/gui_generated/main_screen/MainViewBase.hpp \
  ../TouchGFX/gui/include/gui/main_screen/MainPresenter.hpp \
@@ -217,10 +217,10 @@ TouchGFX/target/generated/TouchGFXGeneratedHAL.o: \
 ../Core/Inc/z_displ_ILI9XXX.h:
 ../Core/Inc/fonts.h:
 ../Core/Inc/z_touch_XPT2046.h:
-../TouchGFX/gui/include/gui/light_screen_screen/light_screenView.hpp:
-../TouchGFX/generated/gui_generated/include/gui_generated/light_screen_screen/light_screenViewBase.hpp:
+../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenView.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/humidity_screen_screen/humidity_screenViewBase.hpp:
 ../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:
-../TouchGFX/gui/include/gui/light_screen_screen/light_screenPresenter.hpp:
+../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenPresenter.hpp:
 ../TouchGFX/gui/include/gui/model/ModelListener.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp:
@@ -251,9 +251,9 @@ TouchGFX/target/generated/TouchGFXGeneratedHAL.o: \
 ../TouchGFX/gui/include/gui/temperature_screen_screen/temperature_screenView.hpp:
 ../TouchGFX/generated/gui_generated/include/gui_generated/temperature_screen_screen/temperature_screenViewBase.hpp:
 ../TouchGFX/gui/include/gui/temperature_screen_screen/temperature_screenPresenter.hpp:
-../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenView.hpp:
-../TouchGFX/generated/gui_generated/include/gui_generated/humidity_screen_screen/humidity_screenViewBase.hpp:
-../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenPresenter.hpp:
+../TouchGFX/gui/include/gui/light_screen_screen/light_screenView.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/light_screen_screen/light_screenViewBase.hpp:
+../TouchGFX/gui/include/gui/light_screen_screen/light_screenPresenter.hpp:
 ../TouchGFX/gui/include/gui/main_screen/MainView.hpp:
 ../TouchGFX/generated/gui_generated/include/gui_generated/main_screen/MainViewBase.hpp:
 ../TouchGFX/gui/include/gui/main_screen/MainPresenter.hpp:

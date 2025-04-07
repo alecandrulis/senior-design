@@ -11,6 +11,9 @@ public:
     virtual ~humidity_screenView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+    virtual void setHumidity(float newVal);
+    virtual void increase();
+    virtual void decrease();
 protected:
 };
 

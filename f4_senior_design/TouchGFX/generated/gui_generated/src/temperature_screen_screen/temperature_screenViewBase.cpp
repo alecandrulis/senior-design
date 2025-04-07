@@ -7,17 +7,18 @@
 #include <images/BitmapDatabase.hpp>
 
 temperature_screenViewBase::temperature_screenViewBase() :
-    flexButtonCallback(this, &temperature_screenViewBase::flexButtonCallbackHandler)
+    flexButtonCallback(this, &temperature_screenViewBase::flexButtonCallbackHandler),
+    buttonCallback(this, &temperature_screenViewBase::buttonCallbackHandler)
 {
     __background.setPosition(0, 0, 480, 320);
     __background.setColor(touchgfx::Color::getColorFromRGB(0, 0, 0));
     add(__background);
 
-    text.setPosition(87, 18, 306, 48);
-    text.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    text.setLinespacing(0);
-    text.setTypedText(touchgfx::TypedText(T___SINGLEUSE_Y7ZG));
-    add(text);
+    textarea.setPosition(87, 18, 306, 48);
+    textarea.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    textarea.setLinespacing(0);
+    textarea.setTypedText(touchgfx::TypedText(T___SINGLEUSE_Z66R));
+    add(textarea);
 
     flexButton1.setBoxWithBorderPosition(0, 0, 50, 50);
     flexButton1.setBorderSize(5);
@@ -26,20 +27,24 @@ temperature_screenViewBase::temperature_screenViewBase() :
     flexButton1.setPosition(393, 245, 50, 50);
     add(flexButton1);
 
-    textArea1.setXY(162, 142);
-    textArea1.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
-    textArea1.setLinespacing(0);
-    textArea1.setTypedText(touchgfx::TypedText(T___SINGLEUSE_U49G));
-    add(textArea1);
+    tempVal.setPosition(140, 140, 200, 40);
+    tempVal.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
+    tempVal.setLinespacing(0);
+    tempValBuffer[0] = 0;
+    tempVal.setWildcard(tempValBuffer);
+    tempVal.setTypedText(touchgfx::TypedText(T___SINGLEUSE_VVL5));
+    add(tempVal);
 
     buttonWithIcon1.setXY(111, 72);
     buttonWithIcon1.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_MEDIUM_ROUNDED_NORMAL_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_MEDIUM_ROUNDED_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_NAVIGATION_ARROW_UPWARD_50_50_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_ACTION_DONE_50_50_E8F6FB_SVG_ID));
     buttonWithIcon1.setIconXY(97, 0);
+    buttonWithIcon1.setAction(buttonCallback);
     add(buttonWithIcon1);
 
     buttonWithIcon1_1.setXY(111, 195);
     buttonWithIcon1_1.setBitmaps(touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_MEDIUM_ROUNDED_NORMAL_ID), touchgfx::Bitmap(BITMAP_ALTERNATE_THEME_IMAGES_WIDGETS_BUTTON_REGULAR_HEIGHT_50_MEDIUM_ROUNDED_PRESSED_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_NAVIGATION_ARROW_DOWNWARD_50_50_E8F6FB_SVG_ID), touchgfx::Bitmap(BITMAP_ICON_THEME_IMAGES_ACTION_DONE_50_50_E8F6FB_SVG_ID));
     buttonWithIcon1_1.setIconXY(95, 0);
+    buttonWithIcon1_1.setAction(buttonCallback);
     add(buttonWithIcon1_1);
 }
 
@@ -57,13 +62,27 @@ void temperature_screenViewBase::flexButtonCallbackHandler(const touchgfx::Abstr
 {
     if (&src == &flexButton1)
     {
-        //Interaction1
-        //When flexButton1 clicked call virtual function
-        //Call ToggleLights
-        ToggleLights();
         //Interaction2
         //When flexButton1 clicked change screen to Main
         //Go to Main with no screen transition
         application().gotoMainScreenNoTransition();
+    }
+}
+
+void temperature_screenViewBase::buttonCallbackHandler(const touchgfx::AbstractButton& src)
+{
+    if (&src == &buttonWithIcon1)
+    {
+        //Interaction3
+        //When buttonWithIcon1 clicked call virtual function
+        //Call increase
+        increase();
+    }
+    if (&src == &buttonWithIcon1_1)
+    {
+        //Interaction4
+        //When buttonWithIcon1_1 clicked call virtual function
+        //Call decrease
+        decrease();
     }
 }

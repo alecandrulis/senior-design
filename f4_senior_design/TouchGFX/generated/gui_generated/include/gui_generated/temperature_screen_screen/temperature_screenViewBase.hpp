@@ -10,6 +10,7 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/ButtonWithIcon.hpp>
 
 class temperature_screenViewBase : public touchgfx::View<temperature_screenPresenter>
@@ -22,7 +23,11 @@ public:
     /*
      * Virtual Action Handlers
      */
-    virtual void ToggleLights()
+    virtual void increase()
+    {
+        // Override and implement this function in temperature_screen
+    }
+    virtual void decrease()
     {
         // Override and implement this function in temperature_screen
     }
@@ -36,11 +41,17 @@ protected:
      * Member Declarations
      */
     touchgfx::Box __background;
-    touchgfx::TextArea text;
+    touchgfx::TextArea textarea;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  flexButton1;
-    touchgfx::TextArea textArea1;
+    touchgfx::TextAreaWithOneWildcard tempVal;
     touchgfx::ButtonWithIcon buttonWithIcon1;
     touchgfx::ButtonWithIcon buttonWithIcon1_1;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t TEMPVAL_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar tempValBuffer[TEMPVAL_SIZE];
 
 private:
 
@@ -48,11 +59,13 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<temperature_screenViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+    touchgfx::Callback<temperature_screenViewBase, const touchgfx::AbstractButton&> buttonCallback;
 
     /*
      * Callback Handler Declarations
      */
     void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

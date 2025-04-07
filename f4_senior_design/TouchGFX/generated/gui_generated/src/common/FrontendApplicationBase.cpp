@@ -9,12 +9,12 @@
 #include <touchgfx/Texts.hpp>
 #include <touchgfx/hal/HAL.hpp>
 #include <platform/driver/lcd/LCD16bpp.hpp>
-#include <gui/light_screen_screen/light_screenView.hpp>
-#include <gui/light_screen_screen/light_screenPresenter.hpp>
-#include <gui/temperature_screen_screen/temperature_screenView.hpp>
-#include <gui/temperature_screen_screen/temperature_screenPresenter.hpp>
 #include <gui/humidity_screen_screen/humidity_screenView.hpp>
 #include <gui/humidity_screen_screen/humidity_screenPresenter.hpp>
+#include <gui/temperature_screen_screen/temperature_screenView.hpp>
+#include <gui/temperature_screen_screen/temperature_screenPresenter.hpp>
+#include <gui/light_screen_screen/light_screenView.hpp>
+#include <gui/light_screen_screen/light_screenPresenter.hpp>
 #include <gui/main_screen/MainView.hpp>
 #include <gui/main_screen/MainPresenter.hpp>
 
@@ -48,6 +48,32 @@ void FrontendApplicationBase::gotohumidity_screenScreenNoTransition()
 void FrontendApplicationBase::gotohumidity_screenScreenNoTransitionImpl()
 {
     touchgfx::makeTransition<humidity_screenView, humidity_screenPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// temperature_screen
+
+void FrontendApplicationBase::gototemperature_screenScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gototemperature_screenScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gototemperature_screenScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<temperature_screenView, temperature_screenPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
+}
+
+// light_screen
+
+void FrontendApplicationBase::gotolight_screenScreenNoTransition()
+{
+    transitionCallback = touchgfx::Callback<FrontendApplicationBase>(this, &FrontendApplicationBase::gotolight_screenScreenNoTransitionImpl);
+    pendingScreenTransitionCallback = &transitionCallback;
+}
+
+void FrontendApplicationBase::gotolight_screenScreenNoTransitionImpl()
+{
+    touchgfx::makeTransition<light_screenView, light_screenPresenter, touchgfx::NoTransition, Model >(&currentScreen, &currentPresenter, frontendHeap, &currentTransition, &model);
 }
 
 // Main

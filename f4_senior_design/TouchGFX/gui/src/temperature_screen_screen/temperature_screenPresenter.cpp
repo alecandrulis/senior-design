@@ -16,3 +16,8 @@ void temperature_screenPresenter::deactivate()
 {
 
 }
+
+void temperature_screenPresenter::notifyTemperatureSetPointChanged(float setPoint)
+{
+	view.setTemperature(setPoint);
+}

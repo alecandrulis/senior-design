@@ -23,6 +23,12 @@ public:
     // humidity_screen
     void gotohumidity_screenScreenNoTransition();
 
+    // temperature_screen
+    void gototemperature_screenScreenNoTransition();
+
+    // light_screen
+    void gotolight_screenScreenNoTransition();
+
     // Main
     void gotoMainScreenNoTransition();
 
@@ -33,6 +39,12 @@ protected:
 
     // humidity_screen
     void gotohumidity_screenScreenNoTransitionImpl();
+
+    // temperature_screen
+    void gototemperature_screenScreenNoTransitionImpl();
+
+    // light_screen
+    void gotolight_screenScreenNoTransitionImpl();
 
     // Main
     void gotoMainScreenNoTransitionImpl();

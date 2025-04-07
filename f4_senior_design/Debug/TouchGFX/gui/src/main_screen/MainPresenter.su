@@ -9,6 +9,9 @@
 ../TouchGFX/gui/include/gui/model/ModelListener.hpp:32:18:virtual void ModelListener::notifyADCChanged(uint32_t)	16	static
 ../TouchGFX/gui/include/gui/model/ModelListener.hpp:33:18:virtual void ModelListener::notifyTemperatureChanged(float)	16	static
 ../TouchGFX/gui/include/gui/model/ModelListener.hpp:34:18:virtual void ModelListener::notifyHumidityChanged(float)	16	static
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:35:18:virtual void ModelListener::notifyHumiditySetPointChanged(float)	16	static
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:36:18:virtual void ModelListener::notifyTemperatureSetPointChanged(float)	16	static
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:37:18:virtual void ModelListener::notifyLightsSetPointChanged(int)	16	static
 ../TouchGFX/gui/include/gui/main_screen/MainPresenter.hpp:28:13:MainPresenter::~MainPresenter()	16	static
 ../TouchGFX/gui/include/gui/main_screen/MainPresenter.hpp:28:13:virtual MainPresenter::~MainPresenter()	16	static
 ../TouchGFX/gui/src/main_screen/MainPresenter.cpp:4:1:MainPresenter::MainPresenter(MainView&)	16	static

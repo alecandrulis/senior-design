@@ -2,6 +2,294 @@
   "Application": {
     "Screens": [
       {
+        "Name": "humidity_screen",
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "text",
+            "X": 87,
+            "Y": 18,
+            "Width": 306,
+            "Height": 48,
+            "TextId": "__SingleUse_GXOO",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "flexButton1",
+            "X": 393,
+            "Y": 245,
+            "Width": 50,
+            "Height": 50,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 50,
+                "Height": 50,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          },
+          {
+            "Type": "TextArea",
+            "Name": "humVal",
+            "X": 131,
+            "Y": 140,
+            "Width": 200,
+            "Height": 40,
+            "TextId": "__SingleUse_BMB8",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonWithIcon1",
+            "X": 111,
+            "Y": 72,
+            "Width": 240,
+            "Height": 50,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
+            "IconPressed": "__generated\\icon_theme_images_action_done_50_50_E8F6FB.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_navigation_arrow_upward_50_50_E8F6FB.svg.png",
+            "IconX": 97,
+            "IconHeight": 50,
+            "IconWidth": 50,
+            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonWithIcon1_1",
+            "X": 111,
+            "Y": 195,
+            "Width": 240,
+            "Height": 50,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
+            "IconPressed": "__generated\\icon_theme_images_action_done_50_50_E8F6FB.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_navigation_arrow_downward_50_50_E8F6FB.svg.png",
+            "IconX": 95,
+            "IconHeight": 50,
+            "IconWidth": 50,
+            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButton1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Main"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithIcon1"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increase"
+            }
+          },
+          {
+            "InteractionName": "Interaction4",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithIcon1_1"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decrease"
+            }
+          }
+        ]
+      },
+      {
+        "Name": "temperature_screen",
+        "Components": [
+          {
+            "Type": "TextArea",
+            "Name": "textarea",
+            "X": 87,
+            "Y": 18,
+            "Width": 306,
+            "Height": 48,
+            "TextId": "__SingleUse_Z66R",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            }
+          },
+          {
+            "Type": "FlexButton",
+            "Name": "flexButton1",
+            "X": 393,
+            "Y": 245,
+            "Width": 50,
+            "Height": 50,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "Width": 50,
+                "Height": 50,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorPressed": {
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorBorderReleased": {
+                  "Green": 51,
+                  "Blue": 102
+                },
+                "ColorBorderPressed": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                }
+              }
+            ]
+          },
+          {
+            "Type": "TextArea",
+            "Name": "tempVal",
+            "X": 140,
+            "Y": 140,
+            "Width": 200,
+            "Height": 40,
+            "TextId": "__SingleUse_VVL5",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonWithIcon1",
+            "X": 111,
+            "Y": 72,
+            "Width": 240,
+            "Height": 50,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
+            "IconPressed": "__generated\\icon_theme_images_action_done_50_50_E8F6FB.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_navigation_arrow_upward_50_50_E8F6FB.svg.png",
+            "IconX": 97,
+            "IconHeight": 50,
+            "IconWidth": 50,
+            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
+          },
+          {
+            "Type": "ButtonWithIcon",
+            "Name": "buttonWithIcon1_1",
+            "X": 111,
+            "Y": 195,
+            "Width": 240,
+            "Height": 50,
+            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
+            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
+            "IconPressed": "__generated\\icon_theme_images_action_done_50_50_E8F6FB.svg.png",
+            "IconReleased": "__generated\\icon_theme_images_navigation_arrow_downward_50_50_E8F6FB.svg.png",
+            "IconX": 95,
+            "IconHeight": 50,
+            "IconWidth": 50,
+            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButton1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Main"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithIcon1"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "increase"
+            }
+          },
+          {
+            "InteractionName": "Interaction4",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithIcon1_1"
+            },
+            "Action": {
+              "Type": "ActionCustom",
+              "FunctionName": "decrease"
+            }
+          }
+        ]
+      },
+      {
         "Name": "light_screen",
         "Components": [
           {
@@ -58,11 +346,11 @@
           },
           {
             "Type": "TextArea",
-            "Name": "textArea1",
-            "X": 162,
-            "Y": 142,
-            "Width": 139,
-            "Height": 36,
+            "Name": "lightsVal",
+            "X": 131,
+            "Y": 140,
+            "Width": 200,
+            "Height": 40,
             "TextId": "__SingleUse_4NA0",
             "TextRotation": "0",
             "Color": {
@@ -70,7 +358,10 @@
               "Green": 255,
               "Blue": 255
             },
-            "AutoSize": true
+            "Wildcard1": {
+              "UseBuffer": true,
+              "BufferSize": 10
+            }
           },
           {
             "Type": "ButtonWithIcon",
@@ -107,17 +398,6 @@
         ],
         "Interactions": [
           {
-            "InteractionName": "Interaction1",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "flexButton1"
-            },
-            "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "ToggleLights"
-            }
-          },
-          {
             "InteractionName": "Interaction2",
             "Trigger": {
               "Type": "TriggerClicked",
@@ -128,265 +408,27 @@
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "Main"
             }
-          }
-        ]
-      },
-      {
-        "Name": "temperature_screen",
-        "Components": [
-          {
-            "Type": "TextArea",
-            "Name": "text",
-            "X": 87,
-            "Y": 18,
-            "Width": 306,
-            "Height": 48,
-            "TextId": "__SingleUse_Y7ZG",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            }
           },
           {
-            "Type": "FlexButton",
-            "Name": "flexButton1",
-            "X": 393,
-            "Y": 245,
-            "Width": 50,
-            "Height": 50,
-            "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
-            },
-            "ButtonStyles": [
-              {
-                "Type": "BoxWithBorderButtonStyle",
-                "Width": 50,
-                "Height": 50,
-                "LockToFlexButtonSize": true,
-                "BorderSize": 5,
-                "ColorReleased": {
-                  "Green": 102,
-                  "Blue": 153
-                },
-                "ColorPressed": {
-                  "Green": 153,
-                  "Blue": 204
-                },
-                "ColorBorderReleased": {
-                  "Green": 51,
-                  "Blue": 102
-                },
-                "ColorBorderPressed": {
-                  "Red": 51,
-                  "Green": 102,
-                  "Blue": 153
-                }
-              }
-            ]
-          },
-          {
-            "Type": "TextArea",
-            "Name": "textArea1",
-            "X": 162,
-            "Y": 142,
-            "Width": 139,
-            "Height": 36,
-            "TextId": "__SingleUse_U49G",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "AutoSize": true
-          },
-          {
-            "Type": "ButtonWithIcon",
-            "Name": "buttonWithIcon1",
-            "X": 111,
-            "Y": 72,
-            "Width": 240,
-            "Height": 50,
-            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
-            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
-            "IconPressed": "__generated\\icon_theme_images_action_done_50_50_E8F6FB.svg.png",
-            "IconReleased": "__generated\\icon_theme_images_navigation_arrow_upward_50_50_E8F6FB.svg.png",
-            "IconX": 97,
-            "IconHeight": 50,
-            "IconWidth": 50,
-            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
-          },
-          {
-            "Type": "ButtonWithIcon",
-            "Name": "buttonWithIcon1_1",
-            "X": 111,
-            "Y": 195,
-            "Width": 240,
-            "Height": 50,
-            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
-            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
-            "IconPressed": "__generated\\icon_theme_images_action_done_50_50_E8F6FB.svg.png",
-            "IconReleased": "__generated\\icon_theme_images_navigation_arrow_downward_50_50_E8F6FB.svg.png",
-            "IconX": 95,
-            "IconHeight": 50,
-            "IconWidth": 50,
-            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
-          }
-        ],
-        "Interactions": [
-          {
-            "InteractionName": "Interaction1",
+            "InteractionName": "Interaction3",
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "flexButton1"
+              "TriggerComponent": "buttonWithIcon1"
             },
             "Action": {
               "Type": "ActionCustom",
-              "FunctionName": "ToggleLights"
+              "FunctionName": "increase"
             }
           },
           {
-            "InteractionName": "Interaction2",
+            "InteractionName": "Interaction4",
             "Trigger": {
               "Type": "TriggerClicked",
-              "TriggerComponent": "flexButton1"
-            },
-            "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Main"
-            }
-          }
-        ]
-      },
-      {
-        "Name": "humidity_screen",
-        "Components": [
-          {
-            "Type": "TextArea",
-            "Name": "text",
-            "X": 87,
-            "Y": 18,
-            "Width": 306,
-            "Height": 48,
-            "TextId": "__SingleUse_5FNA",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            }
-          },
-          {
-            "Type": "FlexButton",
-            "Name": "flexButton1",
-            "X": 393,
-            "Y": 245,
-            "Width": 50,
-            "Height": 50,
-            "ButtonTrigger": {
-              "Type": "ClickButtonTrigger"
-            },
-            "ButtonStyles": [
-              {
-                "Type": "BoxWithBorderButtonStyle",
-                "Width": 50,
-                "Height": 50,
-                "LockToFlexButtonSize": true,
-                "BorderSize": 5,
-                "ColorReleased": {
-                  "Green": 102,
-                  "Blue": 153
-                },
-                "ColorPressed": {
-                  "Green": 153,
-                  "Blue": 204
-                },
-                "ColorBorderReleased": {
-                  "Green": 51,
-                  "Blue": 102
-                },
-                "ColorBorderPressed": {
-                  "Red": 51,
-                  "Green": 102,
-                  "Blue": 153
-                }
-              }
-            ]
-          },
-          {
-            "Type": "TextArea",
-            "Name": "textArea1",
-            "X": 162,
-            "Y": 142,
-            "Width": 139,
-            "Height": 36,
-            "TextId": "__SingleUse_9B9B",
-            "TextRotation": "0",
-            "Color": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
-            },
-            "AutoSize": true
-          },
-          {
-            "Type": "ButtonWithIcon",
-            "Name": "buttonWithIcon1",
-            "X": 111,
-            "Y": 72,
-            "Width": 240,
-            "Height": 50,
-            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
-            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
-            "IconPressed": "__generated\\icon_theme_images_action_done_50_50_E8F6FB.svg.png",
-            "IconReleased": "__generated\\icon_theme_images_navigation_arrow_upward_50_50_E8F6FB.svg.png",
-            "IconX": 97,
-            "IconHeight": 50,
-            "IconWidth": 50,
-            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
-          },
-          {
-            "Type": "ButtonWithIcon",
-            "Name": "buttonWithIcon1_1",
-            "X": 111,
-            "Y": 195,
-            "Width": 240,
-            "Height": 50,
-            "Pressed": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_pressed.png",
-            "Released": "__generated\\alternate_theme_images_widgets_button_regular_height_50_medium_rounded_normal.png",
-            "IconPressed": "__generated\\icon_theme_images_action_done_50_50_E8F6FB.svg.png",
-            "IconReleased": "__generated\\icon_theme_images_navigation_arrow_downward_50_50_E8F6FB.svg.png",
-            "IconX": 95,
-            "IconHeight": 50,
-            "IconWidth": 50,
-            "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\medium_rounded_normal.json"
-          }
-        ],
-        "Interactions": [
-          {
-            "InteractionName": "Interaction1",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "flexButton1"
+              "TriggerComponent": "buttonWithIcon1_1"
             },
             "Action": {
               "Type": "ActionCustom",
-              "FunctionName": "ToggleLights"
-            }
-          },
-          {
-            "InteractionName": "Interaction2",
-            "Trigger": {
-              "Type": "TriggerClicked",
-              "TriggerComponent": "flexButton1"
-            },
-            "Action": {
-              "Type": "ActionGotoScreen",
-              "ScreenTransitionType": "ScreenTransitionNone",
-              "ActionComponent": "Main"
+              "FunctionName": "decrease"
             }
           }
         ]
@@ -612,6 +654,30 @@
               "Type": "ActionGotoScreen",
               "ScreenTransitionType": "ScreenTransitionNone",
               "ActionComponent": "humidity_screen"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButton1_1"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "temperature_screen"
+            }
+          },
+          {
+            "InteractionName": "Interaction4",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "flexButton1_2"
+            },
+            "Action": {
+              "Type": "ActionGotoScreen",
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "light_screen"
             }
           }
         ]

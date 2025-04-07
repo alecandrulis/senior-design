@@ -32,6 +32,11 @@ public:
     virtual void notifyADCChanged(uint32_t newVal) {}
     virtual void notifyTemperatureChanged(float newTemp) {}
     virtual void notifyHumidityChanged(float newHumidity) {}
+    virtual void notifyHumiditySetPointChanged(float setPoint) {}
+    virtual void notifyTemperatureSetPointChanged(float setPoint) {}
+    virtual void notifyLightsSetPointChanged(int setPoint) {}
+
+
 protected:
     Model* model;
 };

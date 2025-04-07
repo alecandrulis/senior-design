@@ -11,6 +11,9 @@ public:
     virtual ~light_screenView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+    virtual void setLights(int newVal);
+    virtual void increase();
+    virtual void decrease();
 protected:
 };
 

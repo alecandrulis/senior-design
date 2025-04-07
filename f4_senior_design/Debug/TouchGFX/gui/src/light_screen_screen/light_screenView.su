@@ -1,10 +1,13 @@
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Unicode.hpp:404:25:static touchgfx::Unicode::UnicodeChar* touchgfx::Unicode::snprintfFloat(UnicodeChar*, uint16_t, const char*, float)	24	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:115:18:virtual void touchgfx::Screen::tearDownScreen()	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	16	static
-../TouchGFX/generated/gui_generated/include/gui_generated/light_screen_screen/light_screenViewBase.hpp:25:18:virtual void light_screenViewBase::ToggleLights()	16	static
 ../TouchGFX/gui/include/gui/light_screen_screen/light_screenView.hpp:11:13:light_screenView::~light_screenView()	16	static
 ../TouchGFX/gui/include/gui/light_screen_screen/light_screenView.hpp:11:13:virtual light_screenView::~light_screenView()	16	static
 ../TouchGFX/gui/src/light_screen_screen/light_screenView.cpp:3:1:light_screenView::light_screenView()	16	static
 ../TouchGFX/gui/src/light_screen_screen/light_screenView.cpp:8:6:virtual void light_screenView::setupScreen()	16	static
 ../TouchGFX/gui/src/light_screen_screen/light_screenView.cpp:13:6:virtual void light_screenView::tearDownScreen()	16	static
+../TouchGFX/gui/src/light_screen_screen/light_screenView.cpp:18:6:virtual void light_screenView::setLights(int)	16	static
+../TouchGFX/gui/src/light_screen_screen/light_screenView.cpp:23:6:virtual void light_screenView::increase()	16	static
+../TouchGFX/gui/src/light_screen_screen/light_screenView.cpp:28:6:virtual void light_screenView::decrease()	16	static

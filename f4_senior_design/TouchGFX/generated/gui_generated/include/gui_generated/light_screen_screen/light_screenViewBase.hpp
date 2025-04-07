@@ -10,6 +10,7 @@
 #include <touchgfx/widgets/Box.hpp>
 #include <touchgfx/widgets/TextArea.hpp>
 #include <touchgfx/containers/buttons/Buttons.hpp>
+#include <touchgfx/widgets/TextAreaWithWildcard.hpp>
 #include <touchgfx/widgets/ButtonWithIcon.hpp>
 
 class light_screenViewBase : public touchgfx::View<light_screenPresenter>
@@ -22,7 +23,11 @@ public:
     /*
      * Virtual Action Handlers
      */
-    virtual void ToggleLights()
+    virtual void increase()
+    {
+        // Override and implement this function in light_screen
+    }
+    virtual void decrease()
     {
         // Override and implement this function in light_screen
     }
@@ -38,9 +43,15 @@ protected:
     touchgfx::Box __background;
     touchgfx::TextArea text;
     touchgfx::BoxWithBorderButtonStyle< touchgfx::ClickButtonTrigger >  flexButton1;
-    touchgfx::TextArea textArea1;
+    touchgfx::TextAreaWithOneWildcard lightsVal;
     touchgfx::ButtonWithIcon buttonWithIcon1;
     touchgfx::ButtonWithIcon buttonWithIcon1_1;
+
+    /*
+     * Wildcard Buffers
+     */
+    static const uint16_t LIGHTSVAL_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar lightsValBuffer[LIGHTSVAL_SIZE];
 
 private:
 
@@ -48,11 +59,13 @@ private:
      * Callback Declarations
      */
     touchgfx::Callback<light_screenViewBase, const touchgfx::AbstractButtonContainer&> flexButtonCallback;
+    touchgfx::Callback<light_screenViewBase, const touchgfx::AbstractButton&> buttonCallback;
 
     /*
      * Callback Handler Declarations
      */
     void flexButtonCallbackHandler(const touchgfx::AbstractButtonContainer& src);
+    void buttonCallbackHandler(const touchgfx::AbstractButton& src);
 
 };
 

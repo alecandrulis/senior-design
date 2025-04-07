@@ -16,3 +16,7 @@ void humidity_screenPresenter::deactivate()
 {
 
 }
+
+void humidity_screenPresenter::notifyHumiditySetPointChanged(float setPoint){
+	view.setHumidity(setPoint);
+}

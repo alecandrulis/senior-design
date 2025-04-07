@@ -10,23 +10,23 @@
       </Text>
     </TextGroup>
     <TextGroup Id="Unsorted">
-      <Text Id="__SingleUse_4NA0" Alignment="Left" TypographyId="Typography_00">
-        <Translation Language="GB">New Text</Translation>
+      <Text Id="__SingleUse_BMB8" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_GXOO" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">Humidity Set Point:</Translation>
+      </Text>
+      <Text Id="__SingleUse_VVL5" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">&lt;value&gt;</Translation>
+      </Text>
+      <Text Id="__SingleUse_Z66R" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">Temp Set Point:</Translation>
+      </Text>
+      <Text Id="__SingleUse_4NA0" Alignment="Center" TypographyId="Typography_00">
+        <Translation Language="GB">&lt;value&gt;</Translation>
       </Text>
       <Text Id="__SingleUse_MZWR" Alignment="Center" TypographyId="Typography_00">
-        <Translation Language="GB">Humidity Set Point:</Translation>
-      </Text>
-      <Text Id="__SingleUse_U49G" Alignment="Left" TypographyId="Typography_00">
-        <Translation Language="GB">New Text</Translation>
-      </Text>
-      <Text Id="__SingleUse_Y7ZG" Alignment="Center" TypographyId="Typography_00">
-        <Translation Language="GB">Humidity Set Point:</Translation>
-      </Text>
-      <Text Id="__SingleUse_9B9B" Alignment="Left" TypographyId="Typography_00">
-        <Translation Language="GB">New Text</Translation>
-      </Text>
-      <Text Id="__SingleUse_5FNA" Alignment="Center" TypographyId="Typography_00">
-        <Translation Language="GB">Humidity Set Point:</Translation>
+        <Translation Language="GB">Lights Set Point:</Translation>
       </Text>
       <Text Id="__SingleUse_E175" Alignment="Left" TypographyId="Typography_00">
         <Translation Language="GB">Set Light Duration:&lt;value&gt;</Translation>

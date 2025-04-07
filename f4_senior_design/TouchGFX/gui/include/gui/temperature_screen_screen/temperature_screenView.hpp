@@ -11,6 +11,9 @@ public:
     virtual ~temperature_screenView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+    virtual void setTemperature(float newVal);
+    virtual void increase();
+    virtual void decrease();
 protected:
 };
 

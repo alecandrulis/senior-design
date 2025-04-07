@@ -60,12 +60,14 @@ MainViewBase::MainViewBase() :
     flexButton1_1.setBoxWithBorderPosition(0, 0, 50, 50);
     flexButton1_1.setBorderSize(5);
     flexButton1_1.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButton1_1.setAction(flexButtonCallback);
     flexButton1_1.setPosition(401, 72, 50, 50);
     add(flexButton1_1);
 
     flexButton1_2.setBoxWithBorderPosition(0, 0, 50, 50);
     flexButton1_2.setBorderSize(5);
     flexButton1_2.setBoxWithBorderColors(touchgfx::Color::getColorFromRGB(0, 102, 153), touchgfx::Color::getColorFromRGB(0, 153, 204), touchgfx::Color::getColorFromRGB(0, 51, 102), touchgfx::Color::getColorFromRGB(51, 102, 153));
+    flexButton1_2.setAction(flexButtonCallback);
     flexButton1_2.setPosition(401, 127, 50, 50);
     add(flexButton1_2);
 }
@@ -99,5 +101,19 @@ void MainViewBase::flexButtonCallbackHandler(const touchgfx::AbstractButtonConta
         //When flexButton1 clicked change screen to humidity_screen
         //Go to humidity_screen with no screen transition
         application().gotohumidity_screenScreenNoTransition();
+    }
+    if (&src == &flexButton1_1)
+    {
+        //Interaction3
+        //When flexButton1_1 clicked change screen to temperature_screen
+        //Go to temperature_screen with no screen transition
+        application().gototemperature_screenScreenNoTransition();
+    }
+    if (&src == &flexButton1_2)
+    {
+        //Interaction4
+        //When flexButton1_2 clicked change screen to light_screen
+        //Go to light_screen with no screen transition
+        application().gotolight_screenScreenNoTransition();
     }
 }

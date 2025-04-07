@@ -27,6 +27,8 @@ public:
 
     virtual ~temperature_screenPresenter() {}
 
+    virtual void notifyTemperatureSetPointChanged(float setPoint);
+
 private:
     temperature_screenPresenter();
 

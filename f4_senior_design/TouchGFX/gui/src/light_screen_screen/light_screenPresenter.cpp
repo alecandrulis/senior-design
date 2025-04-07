@@ -16,3 +16,9 @@ void light_screenPresenter::deactivate()
 {
 
 }
+
+void light_screenPresenter::notifyLightsSetPointChanged(int setPoint)
+{
+	view.setLights(setPoint);
+}
+

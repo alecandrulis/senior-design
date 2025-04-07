@@ -83,10 +83,10 @@ TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.o: \
  ../Middlewares/ST/touchgfx/framework/include/common/Partition.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/NoTransition.hpp \
  ../TouchGFX/gui/include/gui/common/FrontendApplication.hpp \
- ../TouchGFX/gui/include/gui/light_screen_screen/light_screenView.hpp \
- ../TouchGFX/generated/gui_generated/include/gui_generated/light_screen_screen/light_screenViewBase.hpp \
+ ../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenView.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/humidity_screen_screen/humidity_screenViewBase.hpp \
  ../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp \
- ../TouchGFX/gui/include/gui/light_screen_screen/light_screenPresenter.hpp \
+ ../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenPresenter.hpp \
  ../TouchGFX/gui/include/gui/model/ModelListener.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp \
  ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp \
@@ -117,9 +117,9 @@ TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.o: \
  ../TouchGFX/gui/include/gui/temperature_screen_screen/temperature_screenView.hpp \
  ../TouchGFX/generated/gui_generated/include/gui_generated/temperature_screen_screen/temperature_screenViewBase.hpp \
  ../TouchGFX/gui/include/gui/temperature_screen_screen/temperature_screenPresenter.hpp \
- ../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenView.hpp \
- ../TouchGFX/generated/gui_generated/include/gui_generated/humidity_screen_screen/humidity_screenViewBase.hpp \
- ../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenPresenter.hpp \
+ ../TouchGFX/gui/include/gui/light_screen_screen/light_screenView.hpp \
+ ../TouchGFX/generated/gui_generated/include/gui_generated/light_screen_screen/light_screenViewBase.hpp \
+ ../TouchGFX/gui/include/gui/light_screen_screen/light_screenPresenter.hpp \
  ../TouchGFX/gui/include/gui/main_screen/MainView.hpp \
  ../TouchGFX/generated/gui_generated/include/gui_generated/main_screen/MainViewBase.hpp \
  ../TouchGFX/gui/include/gui/main_screen/MainPresenter.hpp \
@@ -212,10 +212,10 @@ TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.o: \
 ../Middlewares/ST/touchgfx/framework/include/common/Partition.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/transitions/NoTransition.hpp:
 ../TouchGFX/gui/include/gui/common/FrontendApplication.hpp:
-../TouchGFX/gui/include/gui/light_screen_screen/light_screenView.hpp:
-../TouchGFX/generated/gui_generated/include/gui_generated/light_screen_screen/light_screenViewBase.hpp:
+../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenView.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/humidity_screen_screen/humidity_screenViewBase.hpp:
 ../Middlewares/ST/touchgfx/framework/include/mvp/View.hpp:
-../TouchGFX/gui/include/gui/light_screen_screen/light_screenPresenter.hpp:
+../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenPresenter.hpp:
 ../TouchGFX/gui/include/gui/model/ModelListener.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/Box.hpp:
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/widgets/TextArea.hpp:
@@ -246,9 +246,9 @@ TouchGFX/generated/gui_generated/src/common/FrontendApplicationBase.o: \
 ../TouchGFX/gui/include/gui/temperature_screen_screen/temperature_screenView.hpp:
 ../TouchGFX/generated/gui_generated/include/gui_generated/temperature_screen_screen/temperature_screenViewBase.hpp:
 ../TouchGFX/gui/include/gui/temperature_screen_screen/temperature_screenPresenter.hpp:
-../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenView.hpp:
-../TouchGFX/generated/gui_generated/include/gui_generated/humidity_screen_screen/humidity_screenViewBase.hpp:
-../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenPresenter.hpp:
+../TouchGFX/gui/include/gui/light_screen_screen/light_screenView.hpp:
+../TouchGFX/generated/gui_generated/include/gui_generated/light_screen_screen/light_screenViewBase.hpp:
+../TouchGFX/gui/include/gui/light_screen_screen/light_screenPresenter.hpp:
 ../TouchGFX/gui/include/gui/main_screen/MainView.hpp:
 ../TouchGFX/generated/gui_generated/include/gui_generated/main_screen/MainViewBase.hpp:
 ../TouchGFX/gui/include/gui/main_screen/MainPresenter.hpp:

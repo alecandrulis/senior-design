@@ -9,8 +9,12 @@
 ../TouchGFX/gui/include/gui/model/ModelListener.hpp:32:18:virtual void ModelListener::notifyADCChanged(uint32_t)	1
 ../TouchGFX/gui/include/gui/model/ModelListener.hpp:33:18:virtual void ModelListener::notifyTemperatureChanged(float)	1
 ../TouchGFX/gui/include/gui/model/ModelListener.hpp:34:18:virtual void ModelListener::notifyHumidityChanged(float)	1
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:35:18:virtual void ModelListener::notifyHumiditySetPointChanged(float)	1
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:36:18:virtual void ModelListener::notifyTemperatureSetPointChanged(float)	1
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:37:18:virtual void ModelListener::notifyLightsSetPointChanged(int)	1
 ../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenPresenter.hpp:28:13:humidity_screenPresenter::~humidity_screenPresenter()	1
 ../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenPresenter.hpp:28:13:virtual humidity_screenPresenter::~humidity_screenPresenter()	1
 ../TouchGFX/gui/src/humidity_screen_screen/humidity_screenPresenter.cpp:4:1:humidity_screenPresenter::humidity_screenPresenter(humidity_screenView&)	1
 ../TouchGFX/gui/src/humidity_screen_screen/humidity_screenPresenter.cpp:10:6:virtual void humidity_screenPresenter::activate()	1
 ../TouchGFX/gui/src/humidity_screen_screen/humidity_screenPresenter.cpp:15:6:virtual void humidity_screenPresenter::deactivate()	1
+../TouchGFX/gui/src/humidity_screen_screen/humidity_screenPresenter.cpp:20:6:virtual void humidity_screenPresenter::notifyHumiditySetPointChanged(float)	1

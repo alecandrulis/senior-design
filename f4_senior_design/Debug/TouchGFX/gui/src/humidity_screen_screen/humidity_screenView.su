@@ -1,10 +1,13 @@
+../Middlewares/ST/touchgfx/framework/include/touchgfx/Unicode.hpp:404:25:static touchgfx::Unicode::UnicodeChar* touchgfx::Unicode::snprintfFloat(UnicodeChar*, uint16_t, const char*, float)	24	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:104:18:virtual void touchgfx::Screen::afterTransition()	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:115:18:virtual void touchgfx::Screen::tearDownScreen()	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:144:18:virtual void touchgfx::Screen::handleTickEvent()	16	static
 ../Middlewares/ST/touchgfx/framework/include/touchgfx/Screen.hpp:154:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	16	static
-../TouchGFX/generated/gui_generated/include/gui_generated/humidity_screen_screen/humidity_screenViewBase.hpp:25:18:virtual void humidity_screenViewBase::ToggleLights()	16	static
 ../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenView.hpp:11:13:humidity_screenView::~humidity_screenView()	16	static
 ../TouchGFX/gui/include/gui/humidity_screen_screen/humidity_screenView.hpp:11:13:virtual humidity_screenView::~humidity_screenView()	16	static
 ../TouchGFX/gui/src/humidity_screen_screen/humidity_screenView.cpp:3:1:humidity_screenView::humidity_screenView()	16	static
 ../TouchGFX/gui/src/humidity_screen_screen/humidity_screenView.cpp:8:6:virtual void humidity_screenView::setupScreen()	16	static
 ../TouchGFX/gui/src/humidity_screen_screen/humidity_screenView.cpp:13:6:virtual void humidity_screenView::tearDownScreen()	16	static
+../TouchGFX/gui/src/humidity_screen_screen/humidity_screenView.cpp:18:6:virtual void humidity_screenView::setHumidity(float)	16	static
+../TouchGFX/gui/src/humidity_screen_screen/humidity_screenView.cpp:23:6:virtual void humidity_screenView::increase()	16	static
+../TouchGFX/gui/src/humidity_screen_screen/humidity_screenView.cpp:28:6:virtual void humidity_screenView::decrease()	16	static

@@ -59,6 +59,9 @@ TIM_HandleTypeDef htim4;
 	uint32_t value_adc;
 	float temp;
 	float hum;
+	float temp_set_point = 20;
+	float humidity_set_point = 50;
+	int lights_set_point = 8;
 	uint8_t i2c_return[8];
 	uint8_t i2c_buffer[3] = {0x03, 0x00, 0x04};
 
@@ -150,6 +153,7 @@ int main(void)
 //	  while(HAL_I2C_IsDeviceReady(&hi2c2, 0xB8,1, HAL_MAX_DELAY) != HAL_OK){
 //
 //	  }
+	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 1);
 
 	  while (1)
 	  {
@@ -617,6 +621,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOA, LD2_Pin|DISPL_LED_Pin|DISPL_DC_Pin|GPIO_PIN_10, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(DISPL_CS_GPIO_Port, DISPL_CS_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
@@ -646,12 +653,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : DISPL_CS_Pin */
-  GPIO_InitStruct.Pin = DISPL_CS_Pin;
+  /*Configure GPIO pins : PC6 DISPL_CS_Pin */
+  GPIO_InitStruct.Pin = GPIO_PIN_6|DISPL_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(DISPL_CS_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pin : TOUCH_INT_Pin */
   GPIO_InitStruct.Pin = TOUCH_INT_Pin;
