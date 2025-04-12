@@ -41,11 +41,12 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-ADC_HandleTypeDef hadc1;
-DMA_HandleTypeDef hdma_adc1;
+ADC_HandleTypeDef hadc2;
+DMA_HandleTypeDef hdma_adc2;
 
 CRC_HandleTypeDef hcrc;
 
+I2C_HandleTypeDef hi2c1;
 I2C_HandleTypeDef hi2c2;
 
 SPI_HandleTypeDef hspi2;
@@ -74,10 +75,11 @@ static void MX_DMA_Init(void);
 static void MX_SPI2_Init(void);
 static void MX_CRC_Init(void);
 static void MX_TIM3_Init(void);
-static void MX_ADC1_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_I2C2_Init(void);
 static void MX_TIM4_Init(void);
+static void MX_ADC2_Init(void);
+static void MX_I2C1_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -120,10 +122,11 @@ int main(void)
   MX_SPI2_Init();
   MX_CRC_Init();
   MX_TIM3_Init();
-  MX_ADC1_Init();
   MX_TIM2_Init();
   MX_I2C2_Init();
   MX_TIM4_Init();
+  MX_ADC2_Init();
+  MX_I2C1_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
@@ -139,10 +142,10 @@ int main(void)
 
 	  Displ_BackLight('I');  					// initialize backlight
 	  HAL_TIM_Base_Start_IT(&TGFX_T);			// start TouchGFX tick timer
-	  HAL_ADC_Start_DMA(&hadc1,(uint32_t*)&value_adc,1);
+	  HAL_ADC_Start_DMA(&hadc2,(uint32_t*)&value_adc,1);
 	  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
 
-	  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_2);
+	  //HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_2);
 	  htim4.Instance->CCR2 = 10;
 	  htim2.Instance->CCR1 = 15000;
 
@@ -150,61 +153,85 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-//	  while(HAL_I2C_IsDeviceReady(&hi2c2, 0xB8,1, HAL_MAX_DELAY) != HAL_OK){
+//	  while(HAL_I2C_IsDeviceReady(&hi2c1, 0xB8,1, HAL_MAX_DELAY) != HAL_OK){
 //
 //	  }
-	  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, 1);
+
+	  HAL_GPIO_WritePin(HUMIDITY_EN_GPIO_Port, HUMIDITY_EN_Pin,1);
 
 	  while (1)
 	  {
+//		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0,1);
+//		  HAL_GPIO_WritePin(PUMP1_EN_GPIO_Port, PUMP1_EN_Pin, 0);
+//		  HAL_GPIO_WritePin(PUMP2_EN_GPIO_Port, PUMP2_EN_Pin, 0);
+//	  	  HAL_GPIO_WritePin(HUMIDITY_EN_GPIO_Port, HUMIDITY_EN_Pin,0);
+//
+//		  HAL_Delay(10000);
+//		  HAL_GPIO_WritePin(PUMP1_EN_GPIO_Port, PUMP1_EN_Pin, 1);
+//		  HAL_GPIO_WritePin(PUMP2_EN_GPIO_Port, PUMP2_EN_Pin, 1);
+//	  	  HAL_GPIO_WritePin(HUMIDITY_EN_GPIO_Port, HUMIDITY_EN_Pin,1);
+//
+//		  HAL_Delay(10000);
 
-		  HAL_ADC_Start_DMA(&hadc1,(uint32_t*)&value_adc,1);
-		  HAL_I2C_Master_Transmit (&hi2c2, 0xB8, i2c_buffer, 3, 100);
-		  HAL_I2C_Master_Receive (&hi2c2, 0xB9, i2c_return, 8, 100);
+		  if (HAL_GPIO_ReadPin(WATER_LEVEL_GPIO_Port, WATER_LEVEL_Pin)){
+			  HAL_GPIO_WritePin(PUMP1_EN_GPIO_Port, PUMP1_EN_Pin, 1);
+			  HAL_GPIO_WritePin(PUMP2_EN_GPIO_Port, PUMP2_EN_Pin, 1);
+		  }
+		  else{
+			  HAL_GPIO_WritePin(PUMP1_EN_GPIO_Port, PUMP1_EN_Pin, 0);
+			  HAL_GPIO_WritePin(PUMP2_EN_GPIO_Port, PUMP2_EN_Pin, 0);
+		  }
+
+
+
+
+		  HAL_ADC_Start_DMA(&hadc2,(uint32_t*)&value_adc,1);
+		  HAL_I2C_Master_Transmit (&hi2c1, 0xB8, i2c_buffer, 3, 100);
+		  HAL_I2C_Master_Receive (&hi2c1, 0xB9, i2c_return, 8, 100);
 		  temp = ((i2c_return[4] << 8) + i2c_return[5]);
 		  hum = ((i2c_return[2] << 8) + i2c_return[3]);
 		  temp = floor(temp)/10.0;
 		  hum = floor(hum)/10.0;
-
-		  //htim4.Instance->CCR2 = (value_adc/4096.0) * 100;
-		  if (temp < 23){
-			  htim4.Instance->CCR2 = 10;
-		  }
-		  if (temp > 24){
-			  htim4.Instance->CCR2 = 0;
-		  		  }
-//		  else{
-//			  htim2.Instance->CCR1 = 0;
 //
+//		  //htim4.Instance->CCR2 = (value_adc/4096.0) * 100;
+//		  if (temp < 23){
+//			  htim4.Instance->CCR2 = 10;
 //		  }
-		  //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10,1);
-
-		  if (hum <=50){
-			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10,1);
-		  }
-		  if (hum >=80){
-				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10,0);
-			  }
-
-	//	  for (int i = 0; i <= 8; i++){
-	//		  htim2.Instance->CCR1 = 4096 - (512 * i); //100
-	//		  HAL_Delay(2000);
-	//
-	//	  }
-
-		  //HAL_Delay(100);
-		  //HAL_I2C_Master_Receive (&hi2c2, 0xB9, data, 5, 100);
-
-		  //HAL_I2C_Mem_Read (&hi2c2, 0xB8, 0x00, 0, value_humidity_high, 5, 1000);
-		  //HAL_I2C_Master_Transmit (I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint8_t* pData, uint16_t Size, uint32_t Timeout);
-		  //HAL_I2C_Master_Receive (I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint8_t* pData, uint16_t Size, uint32_t Timeout);
-	//	  HAL_I2C_Mem_Write (I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t * pData, uint16_t Size, uint32_t Timeout);
-
-
-		  //HAL_I2C_Mem_Read (I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t * pData, uint16_t Size, uint32_t Timeout);
-
-
-
+//		  if (temp > 24){
+//			  htim4.Instance->CCR2 = 0;
+//		  		  }
+////		  else{
+////			  htim2.Instance->CCR1 = 0;
+////
+////		  }
+//		  //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10,1);
+//
+//		  if (hum <=(humidity_set_point - 10)){
+//			  HAL_GPIO_WritePin(HUMIDITY_EN_GPIO_Port, HUMIDITY_EN_Pin,1);
+//		  }
+//		  if (hum >=(humidity_set_point + 10)){
+//			  HAL_GPIO_WritePin(HUMIDITY_EN_GPIO_Port, HUMIDITY_EN_Pin,0);
+//			  }
+//
+//	//	  for (int i = 0; i <= 8; i++){
+//	//		  htim2.Instance->CCR1 = 4096 - (512 * i); //100
+//	//		  HAL_Delay(2000);
+//	//
+//	//	  }
+//
+//		  //HAL_Delay(100);
+//		  //HAL_I2C_Master_Receive (&hi2c2, 0xB9, data, 5, 100);
+//
+//		  //HAL_I2C_Mem_Read (&hi2c2, 0xB8, 0x00, 0, value_humidity_high, 5, 1000);
+//		  //HAL_I2C_Master_Transmit (I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint8_t* pData, uint16_t Size, uint32_t Timeout);
+//		  //HAL_I2C_Master_Receive (I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint8_t* pData, uint16_t Size, uint32_t Timeout);
+//	//	  HAL_I2C_Mem_Write (I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t * pData, uint16_t Size, uint32_t Timeout);
+//
+//
+//		  //HAL_I2C_Mem_Read (I2C_HandleTypeDef * hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t * pData, uint16_t Size, uint32_t Timeout);
+//
+//
+//
     /* USER CODE END WHILE */
 
   MX_TouchGFX_Process();
@@ -268,54 +295,54 @@ void SystemClock_Config(void)
 }
 
 /**
-  * @brief ADC1 Initialization Function
+  * @brief ADC2 Initialization Function
   * @param None
   * @retval None
   */
-static void MX_ADC1_Init(void)
+static void MX_ADC2_Init(void)
 {
 
-  /* USER CODE BEGIN ADC1_Init 0 */
+  /* USER CODE BEGIN ADC2_Init 0 */
 
-  /* USER CODE END ADC1_Init 0 */
+  /* USER CODE END ADC2_Init 0 */
 
   ADC_ChannelConfTypeDef sConfig = {0};
 
-  /* USER CODE BEGIN ADC1_Init 1 */
+  /* USER CODE BEGIN ADC2_Init 1 */
 
-  /* USER CODE END ADC1_Init 1 */
+  /* USER CODE END ADC2_Init 1 */
 
   /** Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of conversion)
   */
-  hadc1.Instance = ADC1;
-  hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
-  hadc1.Init.Resolution = ADC_RESOLUTION_12B;
-  hadc1.Init.ScanConvMode = DISABLE;
-  hadc1.Init.ContinuousConvMode = ENABLE;
-  hadc1.Init.DiscontinuousConvMode = DISABLE;
-  hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-  hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
-  hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc1.Init.NbrOfConversion = 1;
-  hadc1.Init.DMAContinuousRequests = DISABLE;
-  hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
-  if (HAL_ADC_Init(&hadc1) != HAL_OK)
+  hadc2.Instance = ADC2;
+  hadc2.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
+  hadc2.Init.Resolution = ADC_RESOLUTION_12B;
+  hadc2.Init.ScanConvMode = DISABLE;
+  hadc2.Init.ContinuousConvMode = ENABLE;
+  hadc2.Init.DiscontinuousConvMode = DISABLE;
+  hadc2.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+  hadc2.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+  hadc2.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+  hadc2.Init.NbrOfConversion = 1;
+  hadc2.Init.DMAContinuousRequests = DISABLE;
+  hadc2.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+  if (HAL_ADC_Init(&hadc2) != HAL_OK)
   {
     Error_Handler();
   }
 
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time.
   */
-  sConfig.Channel = ADC_CHANNEL_10;
+  sConfig.Channel = ADC_CHANNEL_14;
   sConfig.Rank = 1;
   sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
-  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  if (HAL_ADC_ConfigChannel(&hadc2, &sConfig) != HAL_OK)
   {
     Error_Handler();
   }
-  /* USER CODE BEGIN ADC1_Init 2 */
+  /* USER CODE BEGIN ADC2_Init 2 */
 
-  /* USER CODE END ADC1_Init 2 */
+  /* USER CODE END ADC2_Init 2 */
 
 }
 
@@ -342,6 +369,40 @@ static void MX_CRC_Init(void)
   /* USER CODE BEGIN CRC_Init 2 */
 
   /* USER CODE END CRC_Init 2 */
+
+}
+
+/**
+  * @brief I2C1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_I2C1_Init(void)
+{
+
+  /* USER CODE BEGIN I2C1_Init 0 */
+
+  /* USER CODE END I2C1_Init 0 */
+
+  /* USER CODE BEGIN I2C1_Init 1 */
+
+  /* USER CODE END I2C1_Init 1 */
+  hi2c1.Instance = I2C1;
+  hi2c1.Init.ClockSpeed = 100000;
+  hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
+  hi2c1.Init.OwnAddress1 = 0;
+  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+  hi2c1.Init.OwnAddress2 = 0;
+  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN I2C1_Init 2 */
+
+  /* USER CODE END I2C1_Init 2 */
 
 }
 
@@ -594,9 +655,9 @@ static void MX_DMA_Init(void)
   /* DMA1_Stream4_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Stream4_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream4_IRQn);
-  /* DMA2_Stream0_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
+  /* DMA2_Stream2_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA2_Stream2_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream2_IRQn);
 
 }
 
@@ -613,15 +674,17 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
-  __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LD2_Pin|DISPL_LED_Pin|DISPL_DC_Pin|GPIO_PIN_10, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, DISPL_LED_Pin|DISPL_DC_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_6, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, PUMP1_EN_Pin|HUMIDITY_EN_Pin|DISPL_RST_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(PUMP2_EN_GPIO_Port, PUMP2_EN_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(DISPL_CS_GPIO_Port, DISPL_CS_Pin, GPIO_PIN_SET);
@@ -629,32 +692,28 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(TOUCH_CS_GPIO_Port, TOUCH_CS_Pin, GPIO_PIN_SET);
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, DISPL_RST_Pin|GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin : B1_Pin */
-  GPIO_InitStruct.Pin = B1_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : USART_TX_Pin USART_RX_Pin */
-  GPIO_InitStruct.Pin = USART_TX_Pin|USART_RX_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-  GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : LD2_Pin DISPL_LED_Pin DISPL_DC_Pin TOUCH_CS_Pin */
-  GPIO_InitStruct.Pin = LD2_Pin|DISPL_LED_Pin|DISPL_DC_Pin|TOUCH_CS_Pin;
+  /*Configure GPIO pins : DISPL_LED_Pin DISPL_DC_Pin TOUCH_CS_Pin */
+  GPIO_InitStruct.Pin = DISPL_LED_Pin|DISPL_DC_Pin|TOUCH_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PC6 DISPL_CS_Pin */
-  GPIO_InitStruct.Pin = GPIO_PIN_6|DISPL_CS_Pin;
+  /*Configure GPIO pin : WATER_LEVEL_Pin */
+  GPIO_InitStruct.Pin = WATER_LEVEL_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(WATER_LEVEL_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PUMP1_EN_Pin HUMIDITY_EN_Pin DISPL_RST_Pin */
+  GPIO_InitStruct.Pin = PUMP1_EN_Pin|HUMIDITY_EN_Pin|DISPL_RST_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PUMP2_EN_Pin DISPL_CS_Pin */
+  GPIO_InitStruct.Pin = PUMP2_EN_Pin|DISPL_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -665,27 +724,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(TOUCH_INT_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : PA10 */
-  GPIO_InitStruct.Pin = GPIO_PIN_10;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : DISPL_RST_Pin */
-  GPIO_InitStruct.Pin = DISPL_RST_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(DISPL_RST_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PB8 PB9 */
-  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);

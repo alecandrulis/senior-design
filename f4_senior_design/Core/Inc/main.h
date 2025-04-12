@@ -69,24 +69,26 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define B1_Pin GPIO_PIN_13
-#define B1_GPIO_Port GPIOC
 #define DISPL_MOSI_Pin GPIO_PIN_1
 #define DISPL_MOSI_GPIO_Port GPIOC
 #define TOUCH_MISO_Pin GPIO_PIN_2
 #define TOUCH_MISO_GPIO_Port GPIOC
-#define USART_TX_Pin GPIO_PIN_2
-#define USART_TX_GPIO_Port GPIOA
-#define USART_RX_Pin GPIO_PIN_3
-#define USART_RX_GPIO_Port GPIOA
-#define LD2_Pin GPIO_PIN_5
-#define LD2_GPIO_Port GPIOA
 #define DISPL_LED_Pin GPIO_PIN_6
 #define DISPL_LED_GPIO_Port GPIOA
 #define DISPL_DC_Pin GPIO_PIN_7
 #define DISPL_DC_GPIO_Port GPIOA
+#define MOISTURE_SENSOR_Pin GPIO_PIN_4
+#define MOISTURE_SENSOR_GPIO_Port GPIOC
+#define WATER_LEVEL_Pin GPIO_PIN_5
+#define WATER_LEVEL_GPIO_Port GPIOC
+#define PUMP1_EN_Pin GPIO_PIN_12
+#define PUMP1_EN_GPIO_Port GPIOB
 #define DISPL_SCK_Pin GPIO_PIN_13
 #define DISPL_SCK_GPIO_Port GPIOB
+#define HUMIDITY_EN_Pin GPIO_PIN_15
+#define HUMIDITY_EN_GPIO_Port GPIOB
+#define PUMP2_EN_Pin GPIO_PIN_6
+#define PUMP2_EN_GPIO_Port GPIOC
 #define DISPL_CS_Pin GPIO_PIN_7
 #define DISPL_CS_GPIO_Port GPIOC
 #define TOUCH_INT_Pin GPIO_PIN_8
@@ -98,10 +100,10 @@ void Error_Handler(void);
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14
 #define TCK_GPIO_Port GPIOA
-#define SWO_Pin GPIO_PIN_3
-#define SWO_GPIO_Port GPIOB
 #define DISPL_RST_Pin GPIO_PIN_6
 #define DISPL_RST_GPIO_Port GPIOB
+#define HEATER_PWM_Pin GPIO_PIN_7
+#define HEATER_PWM_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

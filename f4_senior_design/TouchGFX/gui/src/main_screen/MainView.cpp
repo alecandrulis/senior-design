@@ -28,7 +28,9 @@ void MainView::decreaseValue()
 }
 
 void MainView::ToggleLights(){
-	HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_8);
+	//HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_8);
+	HAL_GPIO_TogglePin(PUMP1_EN_GPIO_Port, PUMP1_EN_Pin);
+	HAL_GPIO_TogglePin(PUMP2_EN_GPIO_Port, PUMP2_EN_Pin);
 
 
 }

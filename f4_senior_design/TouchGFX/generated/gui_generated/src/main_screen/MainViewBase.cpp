@@ -20,7 +20,7 @@ MainViewBase::MainViewBase() :
     toggleButton1.setAction(buttonCallback);
     add(toggleButton1);
 
-    HUMVAL.setPosition(9, 24, 178, 48);
+    HUMVAL.setPosition(9, 24, 282, 48);
     HUMVAL.setColor(touchgfx::Color::getColorFromRGB(255, 255, 255));
     HUMVAL.setLinespacing(0);
     HUMVALBuffer[0] = 0;

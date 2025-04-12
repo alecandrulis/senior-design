@@ -1,0 +1,11 @@
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:32:18:virtual void ModelListener::notifyADCChanged(uint32_t)	0	static
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:33:18:virtual void ModelListener::notifyTemperatureChanged(float)	0	static
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:34:18:virtual void ModelListener::notifyHumidityChanged(float)	0	static
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:35:18:virtual void ModelListener::notifyHumiditySetPointChanged(float)	0	static
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:36:18:virtual void ModelListener::notifyTemperatureSetPointChanged(float)	0	static
+../TouchGFX/gui/include/gui/light_screen_screen/light_screenPresenter.hpp:28:13:light_screenPresenter::~light_screenPresenter()	0	static
+../TouchGFX/gui/src/light_screen_screen/light_screenPresenter.cpp:10:6:virtual void light_screenPresenter::activate()	0	static
+../TouchGFX/gui/src/light_screen_screen/light_screenPresenter.cpp:20:6:virtual void light_screenPresenter::notifyLightsSetPointChanged(int)	0	static
+../TouchGFX/gui/include/gui/light_screen_screen/light_screenPresenter.hpp:28:13:virtual light_screenPresenter::~light_screenPresenter()	8	static
+../TouchGFX/gui/include/gui/light_screen_screen/light_screenPresenter.hpp:28:13:virtual void* light_screenPresenter::_ZThn4_N21light_screenPresenterD1Ev()	0	static
+../TouchGFX/gui/src/light_screen_screen/light_screenPresenter.cpp:4:1:light_screenPresenter::light_screenPresenter(light_screenView&)	0	static

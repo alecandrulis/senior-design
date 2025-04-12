@@ -1,0 +1,11 @@
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:35:18:virtual void ModelListener::notifyHumiditySetPointChanged(float)	1
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:36:18:virtual void ModelListener::notifyTemperatureSetPointChanged(float)	1
+../TouchGFX/gui/include/gui/model/ModelListener.hpp:37:18:virtual void ModelListener::notifyLightsSetPointChanged(int)	1
+../TouchGFX/gui/include/gui/main_screen/MainPresenter.hpp:28:13:MainPresenter::~MainPresenter()	1
+../TouchGFX/gui/src/main_screen/MainPresenter.cpp:9:6:virtual void MainPresenter::activate()	1
+../TouchGFX/gui/src/main_screen/MainPresenter.cpp:18:6:virtual void MainPresenter::notifyADCChanged(uint32_t)	1
+../TouchGFX/gui/src/main_screen/MainPresenter.cpp:22:6:virtual void MainPresenter::notifyTemperatureChanged(float)	1
+../TouchGFX/gui/src/main_screen/MainPresenter.cpp:27:6:virtual void MainPresenter::notifyHumidityChanged(float)	1
+../TouchGFX/gui/include/gui/main_screen/MainPresenter.hpp:28:13:virtual MainPresenter::~MainPresenter()	1
+../TouchGFX/gui/include/gui/main_screen/MainPresenter.hpp:28:13:virtual void* MainPresenter::_ZThn4_N13MainPresenterD1Ev()	1
+../TouchGFX/gui/src/main_screen/MainPresenter.cpp:4:1:MainPresenter::MainPresenter(MainView&)	1
