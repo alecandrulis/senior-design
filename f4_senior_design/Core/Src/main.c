@@ -46,7 +46,6 @@ DMA_HandleTypeDef hdma_adc2;
 
 CRC_HandleTypeDef hcrc;
 
-I2C_HandleTypeDef hi2c1;
 I2C_HandleTypeDef hi2c2;
 
 SPI_HandleTypeDef hspi2;
@@ -58,6 +57,8 @@ TIM_HandleTypeDef htim4;
 
 /* USER CODE BEGIN PV */
 	uint32_t value_adc;
+	float raw_temp;
+	float raw_hum;
 	float temp;
 	float hum;
 	float temp_set_point = 20;
@@ -79,7 +80,6 @@ static void MX_TIM2_Init(void);
 static void MX_I2C2_Init(void);
 static void MX_TIM4_Init(void);
 static void MX_ADC2_Init(void);
-static void MX_I2C1_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -126,7 +126,6 @@ int main(void)
   MX_I2C2_Init();
   MX_TIM4_Init();
   MX_ADC2_Init();
-  MX_I2C1_Init();
   MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
 
@@ -145,7 +144,7 @@ int main(void)
 	  HAL_ADC_Start_DMA(&hadc2,(uint32_t*)&value_adc,1);
 	  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
 
-	  //HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_2);
+	  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_2);
 	  htim4.Instance->CCR2 = 10;
 	  htim2.Instance->CCR1 = 15000;
 
@@ -157,7 +156,7 @@ int main(void)
 //
 //	  }
 
-	  HAL_GPIO_WritePin(HUMIDITY_EN_GPIO_Port, HUMIDITY_EN_Pin,1);
+	  //HAL_GPIO_WritePin(HUMIDITY_EN_GPIO_Port, HUMIDITY_EN_Pin,1);
 
 	  while (1)
 	  {
@@ -185,13 +184,38 @@ int main(void)
 
 
 
-		  HAL_ADC_Start_DMA(&hadc2,(uint32_t*)&value_adc,1);
-		  HAL_I2C_Master_Transmit (&hi2c1, 0xB8, i2c_buffer, 3, 100);
-		  HAL_I2C_Master_Receive (&hi2c1, 0xB9, i2c_return, 8, 100);
+		  HAL_ADC_Start_DMA(&hadc2,(uint32_t*)&value_adc,1); //Read Soil Moisture
+
+		  HAL_I2C_Master_Transmit (&hi2c2, 0xB8, i2c_buffer, 3, 100);
+		  HAL_I2C_Master_Receive (&hi2c2, 0xB9, i2c_return, 8, 100);
+
+
 		  temp = ((i2c_return[4] << 8) + i2c_return[5]);
 		  hum = ((i2c_return[2] << 8) + i2c_return[3]);
 		  temp = floor(temp)/10.0;
 		  hum = floor(hum)/10.0;
+
+
+
+//		  raw_temp = ((i2c_return[4] << 8) + i2c_return[5]);
+//		  raw_hum = ((i2c_return[2] << 8) + i2c_return[3]);
+//		  raw_temp = floor(raw_temp)/10.0;
+//		  raw_hum = floor(raw_hum)/10.0;
+//
+//		  if (raw_temp > 0 && raw_temp < 100){
+//			  temp = raw_temp;
+//		  }
+//
+//		  if (raw_hum > 0 && raw_hum < 100){
+//		  			  hum = raw_hum;
+//		  		  }
+
+		  if (hum <=(40)){
+			  HAL_GPIO_WritePin(HUMIDITY_EN_GPIO_Port, HUMIDITY_EN_Pin,1);
+		  }
+		  if (hum >=(60)){
+			  HAL_GPIO_WritePin(HUMIDITY_EN_GPIO_Port, HUMIDITY_EN_Pin,0);
+			  }
 //
 //		  //htim4.Instance->CCR2 = (value_adc/4096.0) * 100;
 //		  if (temp < 23){
@@ -206,12 +230,7 @@ int main(void)
 ////		  }
 //		  //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_10,1);
 //
-//		  if (hum <=(humidity_set_point - 10)){
-//			  HAL_GPIO_WritePin(HUMIDITY_EN_GPIO_Port, HUMIDITY_EN_Pin,1);
-//		  }
-//		  if (hum >=(humidity_set_point + 10)){
-//			  HAL_GPIO_WritePin(HUMIDITY_EN_GPIO_Port, HUMIDITY_EN_Pin,0);
-//			  }
+
 //
 //	//	  for (int i = 0; i <= 8; i++){
 //	//		  htim2.Instance->CCR1 = 4096 - (512 * i); //100
@@ -369,40 +388,6 @@ static void MX_CRC_Init(void)
   /* USER CODE BEGIN CRC_Init 2 */
 
   /* USER CODE END CRC_Init 2 */
-
-}
-
-/**
-  * @brief I2C1 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_I2C1_Init(void)
-{
-
-  /* USER CODE BEGIN I2C1_Init 0 */
-
-  /* USER CODE END I2C1_Init 0 */
-
-  /* USER CODE BEGIN I2C1_Init 1 */
-
-  /* USER CODE END I2C1_Init 1 */
-  hi2c1.Instance = I2C1;
-  hi2c1.Init.ClockSpeed = 100000;
-  hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
-  hi2c1.Init.OwnAddress1 = 0;
-  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
-  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
-  hi2c1.Init.OwnAddress2 = 0;
-  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
-  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
-  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN I2C1_Init 2 */
-
-  /* USER CODE END I2C1_Init 2 */
 
 }
 
@@ -724,6 +709,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(TOUCH_INT_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PB8 PB9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_9;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF4_I2C1;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
